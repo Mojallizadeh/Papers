@@ -12,7 +12,7 @@
 \usepackage{cite}
 \usepackage{soul}
 \usepackage[margin=2cm]{geometry}
-
+\usepackage{colortbl}
 % Algorithm packages
 \usepackage{algorithm}
 \usepackage{algorithmic}
@@ -581,7 +581,7 @@ the closed-loop system \Cref{E_plant_closed_loop_plitude} converges to the origi
 
 \section{Numerical simulations} \label{S_simulations}
 
-The block diagram of the implemented control systems is shown in \Cref{F_control_diagram}. The {\fontfamily{qcr}\selectfont Phase detection} block, described in \Cref{E_multiple_avant_filter}, is used to calculate the phase. This value is then fed into the {\fontfamily{qcr}\selectfont frequency controller}. Meanwhile, the displacements are calculated using $\max\limits_{T_d}(x_1(t))$ and are provided to the {\fontfamily{qcr}\selectfont Amplitude controller}. As previously explained, the system requires two controllers—namely, the frequency and amplitude controllers—to synthesize the control signals $u_1$ and $u_2$, thereby achieving phase and amplitude tracking, respectively. These two controllers are implemented using three different methods: twisting, PI, and fuzzy algorithms, as detailed in \Cref{S_designed_TC,S_designed_PI,S_designed_fuzzy}, respectively.
+The block diagram of the implemented control systems is shown in \Cref{F_control_diagram}. The {\fontfamily{qcr}\selectfont Phase detection} block, described in \Cref{E_multiple_avant_filter}, is used to calculate the phase. This value is then fed into the {\fontfamily{qcr}\selectfont frequency controller}. Meanwhile, the displacements are calculated using $\max\limits_{T_d}(x_1(t))$ and are provided to the {\fontfamily{qcr}\selectfont Amplitude controller}. As previously explained, the system requires two control laws—namely, the frequency and amplitude controllers—to synthesize the control signals $u_1$ and $u_2$, thereby achieving phase and displacement tracking, respectively. These two controllers are implemented using three different methods: twisting, PI, and fuzzy algorithms, as detailed in \Cref{S_designed_TC,S_designed_PI,S_designed_fuzzy}, respectively.
 
 
 
@@ -596,7 +596,7 @@ The block diagram of the implemented control systems is shown in \Cref{F_control
 
 \subsection{The twisting controller} \label{S_designed_TC}
 
-The developed twisting control signals $u_1$ and $u_2$ in the continuous-time setting are shown in \Cref{E_TC,E_TC_amplitude}, respectively. However, these control signals contain the signum function, which is sensitive to time discretization. Due to the small sampling time used in the numerical simulations, the TC is implemented explicitly (see \Cref{E_TC_a2_explicit} for $u_1$) without exhibiting chattering. However, as will be seen in \Cref{S_experiments}, the large sampling time of one second used in the practical experiments necessitates implementing the TC based on the deadbeat method which is detailed in \Cref{S_appendix}. The parameters of the TC $b_1$ and $b_2$ can be calculated based on \Cref{Theorem_TC_amplitude,Theorem_TC_phase} and using the identified parameters listed in \Cref{T_identification,T_identification_amplitude}.
+The developed twisting control signals $u_1$ and $u_2$ in the continuous-time setting are shown in \Cref{E_TC,E_TC_amplitude}, respectively. However, these control signals contain the signum function, which is sensitive to time discretization \cite{MOJALLIZADEH_Franklin}. Due to the small sampling time used in the numerical simulations, the TC is implemented explicitly (see \Cref{E_TC_a2_explicit}) without exhibiting chattering. However, as will be seen in \Cref{S_experiments}, the large sampling time of one second used in the practical experiments necessitates implementing the TC based on the deadbeat method which is detailed in the appendix in \Cref{S_appendix}. The parameters of the TC $b_1$ and $b_2$ can be calculated based on \Cref{Theorem_TC_amplitude,Theorem_TC_phase} and using the identified parameters listed in \Cref{T_identification,T_identification_amplitude}.
 
 \subsection{PID controller} \label{S_designed_PI}
 
@@ -605,8 +605,8 @@ Following the literature, the PID controller has been widely employed in nearly 
 \begin{table}
     \centering
     \begin{tabular}{|l|c|c|} \hline 
- Control & Phase tracking loop  & Displacement tracking loop \\ \hline
-PID & $k_p=53$,  $k_i=101$  & $k_p=0.07$,  $k_i=0.2$ \\ \hline
+\cellcolor{gray}  & Phase tracking loop  & Displacement tracking loop \\ \hline
+PID & $k_p=43$,  $k_i=3$, $k_d=34$  & $k_p=229$,  $k_i=0.2$, $k_d=44$ \\ \hline
 TC & $b_1=31$,  $b_2=77$  & $b_1=0.04$,  $b_2=0.1$ \\ \hline
 Fuzzy & $\alpha_{1,2,3}=25, 5, 20$  & $\alpha_{1,2,3}=0.3, 0.1, 0.4$  \\  \hline
     \end{tabular}
@@ -626,13 +626,13 @@ The same fuzzy controllers, with different scaling parameters $\alpha_1$, $\alph
 As it was seen, each control architecture shares different parameters that must be tuned to provide fair comparisons among all the control methods. To this end, the parameters of all the mentioned controllers have been tuned based on the numerical simulations, where the objective is to minimize the following cost function.
 \begin{equation}
 \begin{array}{l}
-J_x=\int |\max_{T_d}(x_1(t))-a_d| \hspace{0.2cm}  dt \vspace{0.1cm} \\
-J_\phi=\int  |\phi(t)-\phi_d|  \hspace{0.2cm}  dt \vspace{0.1cm}  \\
+J_x=\int (\max_{T_d}(x_1(t))-a_d)^2 \hspace{0.2cm}  dt \vspace{0.1cm} \\
+J_\phi=\int  (\phi(t)-\phi_d)^2  \hspace{0.2cm}  dt \vspace{0.1cm}  \\
 J=J_x+J_\phi ,
 \end{array}
 \label{E_objective}
 \end{equation}
-where $J_x$ and $J_\phi$ represent the displacement and phase tracking performances. As explained earlier, $(\phi(t) - \phi_d)$ represents the phase tracking error, while $\max_{T_d}(x_1(t)) - a_d$ denotes the displacement tracking error. The {\fontfamily{qcr}\selectfont particle swarm optimization} functions available in {\fontfamily{qcr}\selectfont MATLAB} are used for this purpose, and the tuned parameters are listed in \Cref{T_parameters}.
+where $J_x$ and $J_\phi$ represent the displacement and phase tracking performances, respectively. As previously explained, $(\phi(t) - \phi_d)$ denotes the phase tracking error, while $\max_{T_d}(x_1(t)) - a_d$ corresponds to the displacement tracking error. The {\fontfamily{qcr}\selectfont particle swarm optimization} functions provided by {\fontfamily{qcr}\selectfont MATLAB} are employed for parameter tuning. The optimized parameters are summarized in \Cref{T_parameters}. It should be noted that special attention is paid to the parameter selection to avoid any significant displacement overshoots. Such overshoots are critical in fatigue testing, as they can lead to damage and render the fatigue testing machine non-compliant with standards and regulations.
 
 
 
@@ -640,7 +640,7 @@ where $J_x$ and $J_\phi$ represent the displacement and phase tracking performan
 \begin{table}
     \centering
     \begin{tabular}{|l|c|c|c|} \hline
-         &  TC  & PI & fuzzy   \\  \hline 
+       \cellcolor{gray}  &  TC  & PI & fuzzy   \\  \hline 
       $J_x$ & 0.0266  & 0.0387  &  0.0267   \\  \hline 
       $J_\phi$  & 0.0160  & 0.0259  & 0.0181    \\ \hline 
        $J$ &  0.0426 & 0.0646  &   0.0448 \\ \hline 
@@ -654,13 +654,13 @@ where $J_x$ and $J_\phi$ represent the displacement and phase tracking performan
 
 \section{Simulation results}
 
-The numerical simulations are performed using the parameters listed in \Cref{T_parameters}, and the corresponding results are presented in \Cref{F_sim_frequency,F_sim_displacement}. The simulation runs for 180 seconds, with an abrupt reduction in the stiffness parameter $k$ from 256 N/m to 236 N/m at 60 seconds to simulate the appearance of a crack, thereby replicating realistic test conditions. This change is intended to evaluate the controllers' robustness in tracking both phase and displacement. The objective is to track the desired phase $\phi_d = 90^\circ$ to minimize energy consumption by operating at the peak amplitude of the Bode diagram, as shown in \Cref{F_Bode}. Note that the variable-step {\fontfamily{qcr}\selectfont ode45} solver is used for the numerical simulation with the maximum sampling time of one millisecond to reduce the discretization effect. In this case, the TC is implemented using the explicit discretization without showing the chattering.  According to \Cref{F_sim_frequency}, the fuzzy controller exhibits overshoots in frequency; however, this overshoot results in slightly improved phase tracking compared to the PID controller. In contrast, the TC demonstrates promising performance, with slightly better transient and steady-state tracking than the other controllers.
-
-The other control objective is to track a displacement of 1.5~mm, as illustrated in \Cref{F_sim_displacement}. This value is determined by specialists in the fatigue analysis community for the selected specimen made of carbon fiber composite materials (see \Cref{F_setup}). The system under study is multivariable, meaning that the frequency and displacement control channels influence each other. Additionally, as shown in \Cref{F_Bode}, the amplitude changes significantly around the resonance frequency $\omega_d$. As a result, large oscillations are observed in \Cref{F_sim_displacement}, particularly during the transient phase. According to the results, all control methods achieve almost the same steady-state tracking performance, while the TC exhibits smaller overshoots during the transient compared to the others.
+The numerical simulations are performed using the parameters listed in \Cref{T_parameters}, and the corresponding results are presented in \Cref{F_sim_frequency,F_sim_displacement}. The simulation runs for 180 seconds, with an abrupt reduction in the stiffness parameter $k$ from 256 N/m to 236 N/m at 120 seconds to simulate the appearance of a crack, thereby replicating realistic test conditions. This change is intended to evaluate the controllers' robustness in tracking both phase and displacement. The objective is to track the desired phase $\phi_d = 90^\circ$ to minimize energy consumption by operating at the peak amplitude of the Bode diagram, as shown in \Cref{F_Bode}. Note that the variable-step {\fontfamily{qcr}\selectfont ode45} solver is used for the numerical simulation, with a maximum sampling time of one millisecond to reduce discretization effects. In this case, the TC is implemented using the explicit discretization \Cref{E_TC_a2_explicit}, without showing any chattering.
+According to \Cref{F_sim_frequency}, all controllers can achieve the desired $\phi_d = 90^\circ$ even in the presence of the perturbation at $t = 120$~s. Among the controllers, the TC achieves the desired phase slightly faster than the other two controllers, and its phase tracking is less affected by the perturbation at $t = 120$~s. Comparing the transient responses, the PID controller appears to exhibit the largest overshoots and the slowest convergence rate.
+The other control objective is to track a displacement of 1.5~mm, as illustrated in \Cref{F_sim_displacement}. This value is determined by specialists in the fatigue analysis community for the selected specimen made of carbon fiber composite materials (see \Cref{F_setup}). The system under study is multivariable, meaning that the frequency and displacement control channels influence each other. Additionally, as shown in \Cref{F_Bode}, the amplitude changes significantly around the resonance frequency $\omega_d$. As a result, large oscillations are observed in \Cref{F_sim_displacement}, particularly during the transient phase. According to the results, all control methods achieve the desired displacement of 1.5~mm in the steady state. However, the TC and fuzzy methods show better responses than the PID. In addition, these two controllers demonstrate better disturbance rejection compared to the PID controller. Note that, as detailed in \Cref{S_tuning}, special attention is paid to parameter tuning to avoid any displacement overshoot that could cause early damage to the specimen and result in noncompliance with testing standards. As a result, no significant displacement overshoot is observed in \Cref{F_sim_displacement}. The quantified results corresponding to the simulations are presented in \Cref{T_J_simulation}, indicating that the TC and fuzzy controllers exhibit smaller tracking errors in both phase and displacement compared to the PID controller. This is likely due to the nonlinear dynamics present in the system, which cannot be effectively handled by a linear control law such as the PID.
 
 \begin{figure}
     \centering    \includegraphics[width=\linewidth]{F_frequency_sim.png}
-    \caption{Simulation with the perturbation: frequency and the phase ($k=256 \rightarrow 236$ N/m at t=120~s)}
+    \caption{Simulation: frequency and the phase ($k=256 \rightarrow 236$ N/m at t=120~s)}
     \label{F_sim_frequency}
 \end{figure}
 
@@ -684,15 +684,21 @@ The experimental setup is illustrated in \Cref{F_setup}. A specimen made of carb
     \label{F_setup}
 \end{figure}
 
-The parameters calculated in \Cref{T_parameters} are directly applied in the practical experiments without any retuning, to demonstrate the robustness of the controllers against perturbations present in a real setup. As in \Cref{S_simulations}, the first control objective is to track the desired displacement of 1.5~mm. However, the other objective is to track a desired phase of $89^\circ$, which differs from the $90^\circ$ used in the simulations. This adjustment is necessary because tracking exactly $90^\circ$ tends to induce instability; according to the Bode diagram in \Cref{F_Bode}, amplification is maximized at this phase, and with the relatively large sampling time of one second, the controllers cannot respond quickly enough to compensate for the resulting extreme displacement amplifications. In addition, due to this large sampling time, the TC cannot be implemented using explicit discretization, as it leads to numerical chattering. Instead, a deadbeat implementation is employed to address this issue (see \Cref{S_appendix} for the theory of deadbeat implementation). In a real fatigue testing facility, cracks typically appear in the specimen after a prolonged period (often several weeks), causing changes in its resonance frequency. Under such conditions, the controllers must be robust enough to continue tracking the desired phase and adapt to the new resonance frequency. Simulating this scenario in practice is challenging due to repeatability constraints. Therefore, to evaluate the controllers' ability to recover the resonance frequency, the frequency calculated by the controllers is manually reset to 20~Hz at 60~s.
+The parameters calculated in \Cref{T_parameters} are directly applied in the practical experiments without any retuning, to demonstrate the robustness of the controllers against perturbations present in a real setup. As in \Cref{S_simulations}, the first control objective is to track the desired displacement of 1.5~mm. However, the other objective is to track a desired phase of $89^\circ$, which differs from the $90^\circ$ used in the simulations. This adjustment is necessary because tracking exactly $90^\circ$ tends to induce instability; according to the Bode diagram in \Cref{F_Bode}, amplification is maximized at this phase, and with the relatively large sampling time of one second, the controllers cannot respond quickly enough to compensate for the resulting extreme displacement amplifications. In addition, due to this large sampling time, the TC cannot be implemented using explicit discretization, as it leads to numerical chattering. Instead, a deadbeat implementation is employed to address this issue (see \Cref{S_appendix} for the theory of deadbeat implementation). In a real fatigue testing facility, cracks typically appear in the specimen after a prolonged period (often several weeks), causing changes in its resonance frequency. Under such conditions, the controllers must be robust enough to continue tracking the desired phase and adapt to the new resonance frequency.
 
 
 
 
 
-The results of the 180~s tests are shown in \Cref{F_phase,F_frequency,F_amplitude,F_amplitude_control_signal}. According to \Cref{F_phase}, the TC implemented using the deadbeat scheme exhibits the fastest response. In contrast, the explicitly implemented TC suffers from significant chattering due to the discontinuous signum function in its control law and the large sampling time of one second. The PID controller shows adequate transient performance, while the fuzzy controller performs the worst in this regard. In terms of steady-state performance, the deadbeat TC achieves the smallest error, followed by the PID and then the fuzzy controller. It is worth noting that, in the presence of the injected perturbation at $t=120$~s, the TC responds the fastest but also exhibits overshoots. On the other hand, the fuzzy and PID controllers are less affected by such overshoots. These experimental results are obtained using the parameters tuned in \Cref{S_simulations}, and while slight changes in parameters may affect the conclusions, the primary goal is to evaluate the robustness of the controllers when directly applying the simulation-based tuning in real-world conditions. The generated frequencies are shown in \Cref{F_frequency}, indicating that the frequency oscillations in the explicitly implemented TC are due to chattering, which is not present in the deadbeat implementation.
+The results of 100 seconds of experimental tests are presented in \Cref{F_phase,F_frequency,F_amplitude,F_amplitude_control_signal}. According to \Cref{F_phase}, while the TC implemented using the deadbeat scheme is free from chattering, the explicitly implemented TC suffers from significant chattering due to the discontinuous signum function $\sgn(\cdot)$ in its control law and the relatively large sampling time of one second (this issue is analysed in detail in \Cref{S_appendix}). The deadbeat-based TC demonstrates the fastest transient response and nearly zero steady-state error. In contrast, the PID controller exhibits large oscillations during the transient phase, which could lead to instability in other real-world scenarios involving such a multivariable system. Additionally, the fuzzy controller shows the slowest convergence in phase tracking. Furthermore, both the deadbeat TC and the PID controller achieve nearly zero steady-state tracking error, which is slightly better than the performance of the fuzzy controller. The frequencies computed by the controllers are shown in \Cref{F_frequency}, confirming the previous observations and demonstrating convergence around the theoretically calculated frequency of 39 Hz.
 
-In addition to the control objective of phase tracking, the other objective is to maintain the displacement at 1.5~mm. As shown in \Cref{F_amplitude}, the TC implemented using the deadbeat scheme exhibits the fastest transient response and the smallest steady-state tracking error. However, all controllers display overshoots, particularly after $t=120$~s when the frequency perturbation is introduced. These overshoots are undesirable, as they can lead to early damage of the specimen and violate standards such as DIN 50100 \cite{DIN_standard}. This behavior highlights the coupling and multivariable nature of the system, where changes in frequency significantly affect displacement. Therefore, the design of multivariable control strategies should be considered in future studies. The amplitude of the excitation force $a$ generated by the controllers is shown in \Cref{F_amplitude_control_signal}. It is important to note that displacement is influenced by both the amplitude control signal $a$ and the frequency, due to the system’s multivariable characteristics. Moreover, the chattering observed in the displacement is caused by fluctuations in the frequency, not in the amplitude control signal $a$, further illustrating the coupling between these two control channels.
+In addition to phase tracking, the other control objective is to maintain the displacement at 1.5~mm. As shown in \Cref{F_amplitude}, the TC implemented using the deadbeat scheme exhibits the fastest transient response and zero steady-state tracking error. Apart from the explicitly implemented TC, which suffers from chattering, all other controllers achieve zero steady-state error in displacement tracking. However, the PID controller shows a long convergence time, and the fuzzy controller exhibits significant displacement overshoots. These overshoots, as seen in \Cref{F_amplitude}, are particularly critical, making the fuzzy control strategy unsuitable for real fatigue testing. Displacement overshoots can lead to early specimen damage and result in noncompliance with testing standards.
+These experimental results are obtained using the parameters tuned in \Cref{S_simulations}. While slight changes in parameters may affect the conclusions, the primary goal is to evaluate the robustness of the controllers when directly applying simulation-based tuning in real-world conditions. The amplitude of the excitation force $a$ generated by the controllers is shown in \Cref{F_amplitude_control_signal}. It is important to note that displacement is influenced by both the amplitude control signal $a$ and the frequency, due to the system’s multivariable characteristics. Moreover, it can again be observed that the explicitly implemented TC exhibits chattering in its amplitude control signal, in \Cref{F_amplitude_control_signal}, resulting in chattering in displacement tracking and making it unsuitable for practical applications with such a large sampling time of one second.
+The quantified results corresponding to the experiments are given in \Cref{T_J_experiment}, indicating that the TC implemented based on the deadbeat method provides better transient performances in both phase and displacement tracking compared to the widely used PID controller.
+
+
+
+
 
 
 \begin{figure}
@@ -725,33 +731,24 @@ In addition to the control objective of phase tracking, the other objective is t
 \begin{table}
     \centering
     \begin{tabular}{|l|c|c|c|c|} \hline
-         &  TC (deadbeat) &  TC (explicit)   & PI & fuzzy   \\  \hline 
+       \cellcolor{gray}  &  TC (deadbeat) &  TC (explicit)   & PI & fuzzy   \\  \hline 
       $J_x$     & 3.8226    & 6.0040    &  5.2384   & 4.6702  \\  \hline 
       $J_\phi$  & 237.6890  & 403.2728  & 283.0377  & 444.3254  \\ \hline 
        $J$ &  241.5116      & 409.2768  &   288.2761 & 448.9956 \\ \hline 
     \end{tabular}
     \vspace{0.1cm}
     \caption{Experiment: displacement and phase tracking performances}
-    \label{T_J_simulation}
+    \label{T_J_experiment}
 \end{table}
 
 
 
 \section{Conclusions} \label{S_conclusions}
 
-This study investigated the control design of fatigue analysis machines, a topic that remains relatively underexplored. It began with a comprehensive tutorial reviewing the state of the art in controller design and implementation for fatigue testing systems. A control-oriented model of the system was then developed using identification methods, enabling the design of model-based controllers.
-
-A sliding-mode controller based on the twisting algorithm was designed to meet two primary control objectives: phase tracking and displacement tracking. Phase tracking is essential for maintaining the specimen at its resonance frequency, thereby reducing energy consumption. Displacement tracking ensures compliance with standards such as DIN 50100. Due to the relatively large experimental sampling time of one second, explicit discretization of the twisting controller led to chattering. To address this, a deadbeat implementation was adopted. For comparison, two widely used control strategies—PID and fuzzy controllers—were also adapted and tuned through systematic numerical simulations.
-
-All controllers, using the same gain values obtained from simulations, were implemented and tested on a real fatigue analysis machine. Experimental results showed that the deadbeat-based twisting controller achieved slightly better transient and steady-state performance in both phase and displacement tracking. However, all controllers exhibited displacement overshoots, particularly under abrupt changes in the specimen (emulated by a frequency shift), which could exceed the 3\% limit specified by the DIN 50100 standard. Although such abrupt changes are rare in practice, these results highlight the need for further research into multivariable control design and parameter tuning to ensure compliance with industrial standards.
-
-A key limitation observed during the experiments was the inability to maintain a 90° phase shift due to system instability. At this phase, the system gain increases sharply—as shown in the Bode diagram—and the controllers, constrained by the one-second sampling time, lack the responsiveness needed to maintain stability. Moreover, the system’s natural damping is minimized at 90°, making it impossible to reduce displacement amplitude. A potential solution is to adopt a multivariable control approach that introduces damping through the frequency control channel, effectively shifting the phase and stabilizing the displacement control channel.
-
-
-
-
-
-
+This study explored the control design of fatigue testing machines—a topic that remains relatively underexplored. It began with a comprehensive tutorial reviewing the state of the art in controller design and implementation for fatigue testing systems. A control-oriented model of the system was then developed using identification methods, enabling the design of model-based controllers. This approach was necessary because classical modeling methods often produce models that are unsuitable for controller design.
+A sliding-mode controller based on the twisting algorithm was designed to meet two primary control objectives: phase tracking and displacement tracking. Phase tracking is essential for maintaining the specimen at its resonance frequency, thereby reducing energy consumption. Displacement tracking ensures compliance with standards such as DIN 50100. Due to the relatively large experimental sampling time of one second, explicit discretization of the twisting controller led to chattering. To address this issue, a deadbeat implementation was developed and supported by mathematical theorems demonstrating chattering elimination and convergence. For comparison, two widely used control strategies—PID and fuzzy controllers—were also adapted and tuned through systematic numerical simulations.
+All controllers, using the same gain values obtained from simulations, were implemented and tested on a real fatigue testing machine. Experimental results showed that the deadbeat-based twisting controller achieved slightly better transient and steady-state performance in both phase and displacement tracking. Apart from the explicitly implemented twisting controller, all control strategies provided acceptable tracking errors for both objectives. However, the fuzzy controller exhibited significant displacement overshoots, leading to noncompliance with standards and making it unsuitable for fatigue testing applications.
+A key limitation observed during the experiments was the inability to maintain a 90° phase shift due to system instability. At this phase, the system gain increases sharply—as shown in the Bode diagram—and the controllers, constrained by the one-second sampling time, lack the responsiveness needed to maintain stability. Moreover, the system’s natural damping is minimized at 90°, making it impossible to reduce displacement amplitude. A potential solution for future studies is to adopt a multivariable control approach that introduces damping through the frequency control channel, effectively shifting the phase and stabilizing the displacement control channel.
 
 \section*{Acknowledgments}
 
