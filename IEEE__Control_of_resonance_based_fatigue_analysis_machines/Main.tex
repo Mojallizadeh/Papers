@@ -71,7 +71,7 @@
 
 \title{Control of resonance-based fatigue testing  machines}
 
-\author{Mohammad Rasool MOJALLIZADEH, Etienne PESSARD, and Benoît PICHEREAU
+\author{Mohammad Rasool MOJALLIZADEH, Benoît PICHEREAU, and Etienne PESSARD
         % <-this % stops a space
 \thanks{The authors are with the Arts et Métiers Institute of Technology, LAMPA, F-49035 Angers, France (e-mails: \{mohammad-rasool.mojallizadeh, etienne.pessard, benoit.pichereau\} @ ensam.eu)}
 \thanks{Corresponding author: Mohammad Rasool MOJALLIZADEH}
@@ -79,7 +79,7 @@
 
 % The paper headers
 \markboth{IEEE Transactions on Control Systems Technology}%
-{MOJALLIZADEH \MakeLowercase{\textit{et al.}}: Control of resonance-based fatigue analysis machines}
+{MOJALLIZADEH \MakeLowercase{\textit{et al.}}: Control of resonance-based fatigue testing machines}
 
 %\IEEEpubid{0000--0000/00\$00.00~\copyright~2021 IEEE}
 % Remember, if you use this you must call \IEEEpubidadjcol in the second
@@ -88,7 +88,7 @@
 \maketitle
 
 \begin{abstract}
-This work investigates the design of controllers for resonance-based fatigue testing machines. Unlike conventional systems, resonance-based machines require smaller setups, consume less energy, and significantly reduce test duration by maintaining the specimen at its natural excitation frequency. Achieving this requires a robust control system capable of driving the system to its resonance frequency while rejecting disturbances such as temperature variations and unmodeled dynamics—particularly those caused by crack formation, which alters the specimen’s properties, including its resonance frequency, during testing. A tutorial-style review of state-of-the-art control systems developed for resonance-based fatigue machines is presented, along with the mathematical modeling strategies used. Various control design techniques are discussed for these models, including proportional-integral-derivative (PID) and fuzzy controllers. Subsequently, a control-oriented model is developed using an identification method, which is essential for any model-based controller design. However, this model is subject to uncertainties and perturbations, making control design more challenging. To address this, a sliding-mode controller (SMC) based on the twisting algorithm is proposed to ensure robust stability. Comparative analyses using both numerical simulations and experimental results demonstrate the advantages of the proposed twisting controller over conventional controllers, namely PI and fuzzy controllers.
+This work investigates the design of controllers for resonance-based fatigue testing machines. Unlike conventional systems, resonance-based machines require smaller setups, consume less energy, and significantly reduce test duration by maintaining the specimen at its natural excitation frequency. Achieving this requires a robust control system capable of driving the system to its resonance frequency while rejecting disturbances such as temperature variations and unmodeled dynamics—particularly those caused by crack formation, which alters the specimen’s properties, including its resonance frequency, during testing. A tutorial-style review of state-of-the-art control systems developed for resonance-based fatigue machines is presented in terms of the resonance frequency and displacement tracking. Various control design techniques are discussed for these models, including proportional-integral-derivative (PID) and fuzzy controllers. Subsequently, a control-oriented model is developed using an identification method, which is essential for any model-based controller design. However, this model is subject to uncertainties and perturbations, making control design more challenging. To address this, a sliding-mode controller (SMC) based on the twisting algorithm is proposed to ensure robust stability. Comparative analyses using both numerical simulations and experimental results demonstrate the advantages of the proposed twisting controller over conventional controllers, namely PI and fuzzy controllers.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -105,7 +105,7 @@ One method for testing large-scale structures involves using imbalance motors mo
 Developing an efficient resonance-based fatigue testing machine requires a control system that fulfills two primary objectives: (1) maintaining the excitation frequency close to the specimen’s resonance frequency to reduce the required energy, and (2) achieving the target displacement or force amplitude without exceeding it to comply with standards such as DIN 50100 \cite{DIN_standard}. Despite the importance of such a control system, this aspect is often overlooked in the literature, where instrumentation is typically described without detailing the underlying control algorithms. Motivated by this gap, the present work provides a comprehensive literature review on control strategies for resonance-based fatigue testing machines. The objective is to characterize the properties of existing approaches and identify research gaps stemming from the limited focus on control system design. To this end, a control-oriented model of the system is developed using system identification techniques. Based on this model, a sliding mode control (SMC) strategy is proposed using the twisting algorithm to ensure robust closed-loop stability. SMC is a well-established control methodology (see \cite{Slotine1991} for an introduction), extensively studied since 1955 \cite{Utkin1955}, and valued for its finite-time convergence and robustness to disturbances. Among the various SMC techniques, the twisting controller (TC) \cite{UTKIN2020_higher_order, Orlov_twisting, Utkin_twisting, POLYAKOV_twisting, Santiesteban_twisting, TORRESGONZALEZ2017_twisting, Santiesteban_twisting} is recognized as a second-generation higher-order sliding mode algorithm, as classified in \cite{Fridman2015}.
 
 
-Numerical simulations and realistic experiments are conducted to evaluate the performance of the proposed control system and to compare it with conventional controllers, such as PI and fuzzy controllers. Based on these results, future perspectives are discussed to address existing limitations and advance toward more efficient control strategies. The remainder of the manuscript is organized as follows. In \Cref{S_control_system}, a tutorial-style review of control systems developed for resonance-based fatigue testing machines is presented. \Cref{S_SMC} introduces a control-oriented mathematical model derived using system identification methods, followed by the development of a sliding mode control system based on the twisting algorithm to ensure robust stability. Numerical simulations and experimental validations are provided in \Cref{S_simulations} and \Cref{S_experiments}, respectively, to quantify performance and enable comparative analysis. Finally, \Cref{S_conclusions} concludes the work and outlines future research directions.
+Numerical simulations and realistic experiments are conducted to evaluate the performance of the proposed control system and to compare it with conventional controllers, such as PI and fuzzy controllers. Based on these results, future perspectives are discussed to address existing limitations and advance toward more efficient control strategies. The remainder of the manuscript is organized as follows. In \Cref{S_control_system}, a tutorial-style review of control systems developed for resonance-based fatigue testing machines is presented. \Cref{S_SMC} introduces a control-oriented mathematical model derived using system identification methods, followed by the development of a sliding mode control system based on the twisting algorithm to ensure robust stability. Numerical simulations and experimental validations are provided in \Cref{S_simulations} and \Cref{S_experiments}, respectively, to quantify performance and enable comparative analysis. Finally, \Cref{S_conclusions} concludes the work and outlines future research directions. The nomenclature and the mathematical notation used in the manuscript is explained in \Cref{T_nomenclature,T_notation}, respectively.
 
 
 
@@ -121,7 +121,6 @@ Numerical simulations and realistic experiments are conducted to evaluate the pe
         FEM & Finite Element Method \\ \hline
         PLL & Phase-Locked Loop \\ \hline
         LF & Low-Pass Filter \\ \hline
-        SNR & Signal-to-Noise Ratio \\ \hline
         DIN & Deutsches Institut für Normung \\ \hline
     \end{tabular}
     \vspace{0.1cm}
@@ -129,13 +128,64 @@ Numerical simulations and realistic experiments are conducted to evaluate the pe
     \label{T_nomenclature}
 \end{table}
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|}
+        \hline
+        $t$: continuous-time variable \\
+	 $k$: discrete-time variable \\ 
+        $K$:  stiffness coefficient \\
+	 $m$:  mass of the system \\
+        $b$:  damping coefficient \\
+        $x_1$:  specimen displacement,  $x_2$  specimen velocity \\
+        $f$:  excitation force applied by the shaker \\
+        $s$:  laplace transform variable \\
+        $\omega_0$:  natural frequency of the system \\
+        $\omega_d$:  damped (resonance) resonance frequency,
+        $\zeta$:  damping ratio \\
+        $\phi$:  phase difference between two accelerometers  \\
+        $\phi_d$:  desired phase (typically $\pi/2$) \\
+        $\theta$:  cosine of the phase $\phi$ \\
+        $a$:  amplitude of the excitation force \\
+        $a_d$:  desired displacement amplitude \\
+        $u_1$: control input for excitation frequency \\
+        $u_2$:  control input for excitation amplitude \\
+        $z_1$, $z_2$:  state variables in the identified phase tracking model \\
+        $e_1$, $e_2$:  error states in the amplitude tracking model \\
+$X_1$: Laplace transformation of $x_1$ \\
+$X_2$: Laplace transformation of $x_2$ \\
+$F$: Laplace transformation of $f$ \\
+$Z^{-1}$: unit delay operator \\
+$k_p$, $k_d$, $k_i$: proportional, derivative, and integral gains of the PID\\
+$\alpha_1$, $\alpha_2$, $\alpha_3$: parameters of the fuzzy controller \\
+$x_{1h}$ and $x_{1p}$: homogeneous and particular solutions of $x_1$ \\
+$\gamma$: a positive real constant \\
+$p$ and $q$: parameters of the identified model \\
+$\bar{p}$ and $\bar{q}$: nominal values of $p$ and $q$, respectively \\
+$\tilde{p}$ and $\tilde{q}$: uncertain (unknown) parts of $p$ and $q$, respectively \\
+$b_1$ and $b_2$: parameters of the twisting controller \\
+$k_m$, $k_M$, $k_a$: bounds of the identified parameters \\
+$z_1$ and $z_2$: state variables of the phase error system \\
+$e_1$ and $e_2$: state variables of the displacement error system \\
+$J_x$: displacement tracking cost function \\
+ $J_\phi$: phase tracking cost function \\
+$J$: total cost function \\
+$\lambda$: selection of the set-valued signum function \\
+$q_1$, $q_2$: two intermediate terms used in $\lambda$ \\
+\hline
+    \end{tabular}
+    \vspace{0.1cm}
+    \caption{Mathematical notation used in the manuscript}
+    \label{T_notation}
+\end{table}
 
-\section{Review of the control systems developed for resonance-based fatigue analysis machines} \label{S_control_system}
 
-The block diagram of a typical control system used in resonance-based fatigue testing machines is shown in \Cref{F_control_diagram}. A shaker is employed to apply dynamic loads in order to excite the structure at its resonance frequency and achieve the desired displacement. Since the resonance frequency is either unknown or only approximately known—and may vary over time during testing—a mechanism for resonance frequency search and tracking is essential. The methods for resonance frequency tracking and displacement control are discussed in \Cref{S_frequency_seeking} and \Cref{S_amplitude_tracking}, respectively. Finally, the instrumentation and hardware implementations reported in the literature for realizing such control systems are reviewed in \Cref{S_instrumentation}.
+\section{Review of the control systems developed for resonance-based fatigue testing machines} \label{S_control_system}
+
+The block diagram of a typical resonance-based fatigue testing machines is shown in \Cref{F_control_diagram}. A shaker is employed to apply dynamic loads in order to excite the structure at its resonance frequency and achieve the desired displacement or force in certain cases. Since the resonance frequency is either unknown or only approximately known—and may vary over time during testing—a mechanism for resonance frequency search and tracking is essential. The methods for resonance frequency tracking and displacement control are discussed in \Cref{S_frequency_seeking} and \Cref{S_amplitude_tracking}, respectively. Finally, the instrumentation and hardware implementations reported in the literature for realizing such control systems are reviewed in \Cref{S_instrumentation}.
 \begin{figure}
     \centering    \includegraphics[width=\linewidth]{Control_system_fatigue_total.pdf}
-    \caption{Closed-loop Control system in resonance-based fatigue analysis machines.}
+    \caption{Closed-loop Control system in resonance-based fatigue testing machines based on shakers}
     \label{F_control_diagram}
 \end{figure}
 
@@ -144,7 +194,7 @@ The block diagram of a typical control system used in resonance-based fatigue te
 \subsection{Frequency seeking and tracking}  \label{S_frequency_seeking}
 
 
-The specimen’s resonance frequency is an unknown and time-varying parameter during fatigue testing, influenced by factors such as temperature changes and crack propagation. Therefore, implementing a resonance tracking mechanism is essential. As illustrated in \Cref{F_control_diagram}, two accelerometers are typically used to measure the specimen’s deformation, and the phase difference between these signals is computed using a phase detection block (see \Cref{S_phase_detection}). According to the modeling approach described in \Cref{S_resonance_modeling}, maintaining a specific phase difference—typically 90 degrees—between the two signals ensures operation at the resonance frequency. The measured and desired phase values are then input to a frequency controller, which generates the reference frequency to be tracked. This process is commonly referred to as {\em track and dwell} or a phase-locked loop (PLL) implementation. The modeling of the resonance dynamics is detailed in \Cref{S_resonance_modeling}, and the frequency tracking controllers reported in the literature are reviewed in \Cref{S_frequency_controller}.
+The specimen’s resonance frequency is an unknown and time-varying parameter during fatigue testing, influenced by factors such as temperature changes, damage and crack propagation. Therefore, implementing a resonance tracking mechanism is essential. As illustrated in \Cref{F_control_diagram}, two accelerometers are typically used to measure the specimen’s deformation, and the phase difference between these signals is computed using a phase detection block (see \Cref{S_phase_detection}). According to the modeling approach described in \Cref{S_resonance_modeling}, maintaining a specific phase difference—typically 90 degrees—between the two signals ensures operation at the resonance frequency. The measured and desired phase values are then given to a frequency controller, which generates the control frequency. This process is commonly referred to as {\em track and dwell} or a phase-locked loop (PLL) implementation. The modeling of the resonance dynamics is detailed in \Cref{S_resonance_modeling}, and the frequency tracking controllers reported in the literature are reviewed in \Cref{S_frequency_controller}.
 
 
 
@@ -154,13 +204,13 @@ Regardless of the structural configurations reviewed in \Cref{S_introduction}, t
 \begin{subequations}
   \begin{empheq}[left=\empheqlbrace]{align}
 \dot{x}_1(t)&=x_2(t) \label{E_plant_1} \\
-\dot{x}_2(t)&=\frac{1}{m} \big ( -kx_1(t)-bx_2(t)+f(t)  \big) ,\label{E_plant_2} 
+\dot{x}_2(t)&=\frac{1}{m} \big ( -Kx_1(t)-bx_2(t)+f(t)  \big) ,\label{E_plant_2} 
   \end{empheq}
 \label{E_plant_no_output}
 \end{subequations}
-where $t$ is the continuous-time variable (which may be omitted for brevity), $x_1$ and $x_2$ represent the specimen’s displacement and velocity, respectively; $f$ is the sinusoidal excitation force generated by the shaker; $k$ and $b$ are the stiffness and damping coefficients; and $m$ is the mass of the system. The objective is to compute and apply the excitation force $f$ such that the system operates at resonance. Applying the Laplace transform to \Cref{E_plant_no_output} yields the following transfer function:
+where $t$ is the continuous-time variable (which may be omitted for brevity), $x_1$ and $x_2$ represent the specimen’s displacement and velocity, respectively; $f$ is the sinusoidal excitation force generated by the shaker; $K$ and $b$ are the stiffness and damping coefficients; and $m$ is the mass of the system. The objective is to compute and apply the excitation force $f$ such that the system operates at resonance. Applying the Laplace transform to \Cref{E_plant_no_output} yields the following transfer function:
 \begin{equation}
-\frac{X_1(s)}{F(s)} = \frac{1}{ms^2 + bs + k},
+\frac{X_1(s)}{F(s)} = \frac{1}{ms^2 + bs + K},
 \label{E_Laplace}
 \end{equation}
 where $X_1(s)$ and $F(s)$ are the Laplace transforms of $x_1(t)$ and $f(t)$, respectively, and $s$ is the Laplace variable. This transfer function can be rewritten in the standard second-order form as:
@@ -173,12 +223,12 @@ where $X_1(s)$ and $F(s)$ are the Laplace transforms of $x_1(t)$ and $f(t)$, res
   \end{empheq}
 \label{E_TF_standard}
 \end{subequations}
-where $\omega_0$ is the natural frequency, $\zeta$ is the damping ratio, and $\omega_d$ is the resonance (damping) frequency. The bode diagram of \Cref{E_TF_standard} for the parameters $m=0.01772$~kg, $k=256$~N/m, and $b=0.1$~Ns/m is shown in \Cref{F_Bode} leading to the resonance frequency $\omega_d \simeq 39$~rad/s. As can be seen, at $\omega_d$, the transfer function amplitude \Cref{E_TF_standard_1} is maximized, meaning that to maximize the transferred energy and minimize the dissipation, the input force must be in the sinusoidal form with the frequency $\omega=\omega_d$ as follows:
+where $\omega_0$ is the natural angular frequency, $\zeta$ is the damping ratio, and $\omega_d$ is the resonance (damping) frequency. The bode diagram of \Cref{E_TF_standard} for the parameters $m=0.01772$~kg, $k=256$~N/m, and $b=0.1$~N.s/m is shown in \Cref{F_Bode} leading to the resonance frequency $\omega_d \simeq 39$~rad/s. As can be seen, at $\omega_d$, the transfer function amplitude \Cref{E_TF_standard_1} is maximized, meaning that to maximize the transferred energy and minimize the dissipation, the input force must be in the sinusoidal form with the frequency $\omega=\omega_d$ as follows:
 \begin{equation}
 f(t)=a\sin(\omega t),
 \label{E_F_resonance}
 \end{equation}
-where $a$ denotes the amplitude of the force generated by the actuator. However, since $\omega_d$ is only approximately known and varies over time in practice, generating the excitation force using \Cref{E_F_resonance} is impractical. To address this limitation, rather than relying on such an open-loop control law, phase-tracking closed-loop control strategies are employed in the literature, as discussed in \Cref{S_frequency_controller}.
+where $a$ denotes the amplitude of the force generated by the actuator (shaker). However, since $\omega_d$ is only approximately known and varies over time in practice, generating the excitation force using \Cref{E_F_resonance} is impractical. To address this limitation, rather than relying on such an open-loop control law, phase-tracking closed-loop control strategies are employed in the literature, as discussed in \Cref{S_frequency_controller}.
 
 \begin{figure}
     \centering    \includegraphics[width=\linewidth]{F_bode.png}
@@ -192,7 +242,7 @@ where $a$ denotes the amplitude of the force generated by the actuator. However,
 \subsubsection{Phase tracking controller} \label{S_frequency_controller}
 
 
-Assuming that the specimen resonance frequency $\omega_d$ is known, one may use \Cref{E_F_resonance} to generate the excitation force \cite{SCHNEIDER2018171,herrmann2018simulation_Thesis,SCHRAMM2024117045}. However, $\omega_d$ is typically estimated using FEM-based numerical simulations, which may not accurately reflect real-world conditions. Moreover, $\omega_d$ can vary over time due to factors such as temperature fluctuations or crack initiation in the specimen. Therefore, a closed-loop control strategy is required to continuously track the resonance frequency. Such a control strategy is commonly referred to as a PLL. As illustrated in \Cref{F_Bode}, the amplitude of the transfer function in \Cref{E_Laplace} reaches its maximum when the phase difference between the input force and the output displacement is approximately $90^\circ$ (exactly $90^\circ$ for $\zeta = 0$). Despite its importance, many studies in this area do not detail the controller used in the frequency tracking block \cite{Gautrelet_2020}, leaving the specific control strategies unclear. According to \Cref{T_frequency_seeking}, two types of controllers—namely, PI and fuzzy controllers—are commonly employed for this purpose, as will be reviewed in the following sections.
+Assuming that the specimen resonance frequency $\omega_d$ is known, one may use \Cref{E_F_resonance} to generate the excitation force \cite{SCHNEIDER2018171,herrmann2018simulation_Thesis,SCHRAMM2024117045}. However, $\omega_d$ is typically estimated using FEM-based numerical simulations, which may not accurately reflect real-world conditions. Moreover, $\omega_d$ can vary over time. Therefore, a closed-loop control strategy is required to continuously track the resonance frequency. Such a control strategy is commonly referred to as a PLL. As illustrated in \Cref{F_Bode}, the amplitude of the transfer function in \Cref{E_Laplace} reaches its maximum when the phase difference between the input force and the output displacement is approximately $90^\circ$ (exactly $90^\circ$ for $\zeta = 0$). Despite its importance, many studies in this area do not detail the controller used in the frequency tracking block \cite{Gautrelet_2020}, leaving the specific control strategies unclear. According to \Cref{T_frequency_seeking}, two types of controllers—namely, PI and fuzzy controllers—are commonly employed for this purpose, as will be reviewed in the following sections.
 
 
 The PID control law reads as \cite{kuo}:
@@ -230,7 +280,7 @@ In addition to the PID controller introduced earlier, the application of fuzzy c
     \label{F_fuzzy_rules}
 \end{figure}
 
-The fuzzy controller illustrated in \Cref{F_fuzzy_diagram} is based on the Mamdani fuzzy inference system. It employs the same set of fuzzy rules for both the phase and displacement tracking loops, with each loop distinguished by its own scaling parameters ($\alpha_1, \alpha_2, \alpha_3$). The controller takes the error and its time derivative as inputs to compute the control signals. Notably, the same membership functions are applied to all input (error and its derivative) and output (control signal) variables, as shown in \Cref{F_fuzzy_memberships}.
+The fuzzy controller illustrated in \Cref{F_fuzzy_diagram} is based on the Mamdani fuzzy inference system \cite{Ross2010}. It employs the same set of fuzzy rules for both the phase and displacement tracking loops, with each loop distinguished by its own scaling parameters ($\alpha_1, \alpha_2, \alpha_3$). The controller takes the error and its time derivative as inputs to compute the control signals. Notably, the same membership functions are applied to all input (error and its derivative) and output (control signal) variables, as shown in \Cref{F_fuzzy_memberships}.
 
 
 
@@ -306,7 +356,7 @@ $\blacksquare$
     \hline
     \end{tabular}
     \vspace{0.1cm}
-    \caption{Phase tracking controllers developed for the resonance-based fatigue analysis machines}
+    \caption{Phase tracking controllers developed for the resonance-based fatigue testing machines}
     \label{T_frequency_seeking}
 \end{table}
 
@@ -328,7 +378,7 @@ For the resonance frequency $\omega=\omega_d$ calculated in \Cref{E_TF_standard_
 |\frac{X_1}{F}|_{\omega=\omega_d}=\frac{m}{kb^2}.
 \label{E_Laplace_frequency_mag_resonance}
 \end{equation}
-The homogeneous solution $x_{1h}$ of \Cref{E_plant_closed_loop} is zero in the steady state condition. In this case, for \Cref{E_F_resonance}, and according to \Cref{E_Laplace_frequency_mag_resonance} $x_1$ presents a sinusoidal response in the resonance as follows:
+The homogeneous solution $x_{1h}$ of \Cref{E_plant_closed_loop} is zero in the steady state condition. In this case, for \Cref{E_F_resonance}, and according to \Cref{E_x_1_steady}, $x_1$ presents a sinusoidal response in the resonance as follows:
 \begin{equation}
 x_1(t)=a_0 \frac{m}{kb^2} \sin(\omega_d t+\pi/2).
 \label{E_x_1_steady_amplitude}
@@ -346,7 +396,7 @@ It leads to the following open-loop force:
 F(t)=a_d \frac{kb^2}{m} \sin(\omega_dt). 
 \label{E_x_1_open_loop_force}
 \end{equation}
-Similar to the discussion in \Cref{S_frequency_controller} regarding phase tracking, calculating the excitation force based on \Cref{E_x_1_open_loop_force} may not guarantee the required performance—such as maintaining the specimen's displacement within 3\% of the desired value $a_d$, as specified in the DIN 50100 standard \cite{DIN_standard}—due to the uncertain and time-varying nature of the parameters $k$, $b$, and $m$ during testing. Therefore, the force amplitude $a_0$ must be adjusted using a closed-loop control law. The only closed-loop controller reported in the literature for this purpose is the PI controller, which may be used in conjunction with a time-clocked state machine algorithm to synchronize the imbalance motors \cite{SCHRAMM2024117045,SCHNEIDER2018171,herrmann2018simulation_Thesis}. In this configuration, $a_0$ becomes time-varying and is computed as follows:
+Similar to the discussion in \Cref{S_frequency_controller} regarding phase tracking, calculating the excitation force based on \Cref{E_x_1_open_loop_force} may not guarantee the required performance—such as maintaining the specimen's displacement within 3\% of the desired value $a_d$, as specified in the DIN 50100 standard \cite{DIN_standard}—due to the uncertain and time-varying nature of the parameters $k$, $b$, and $m$ during testing. Therefore, the force amplitude $a_0$ must be adjusted using a closed-loop control law. The only closed-loop controller explained in the literature for this purpose is the PI controller, which may be used in conjunction with a time-clocked state machine algorithm to synchronize the imbalance motors \cite{SCHRAMM2024117045,SCHNEIDER2018171,herrmann2018simulation_Thesis}. In this configuration, $a_0$ becomes time-varying and is computed as follows:
 \begin{equation}
 \begin{array}{l}
 u_2(t) \triangleq x_0(t)=k_{p} (\max_{T_d}(x_1(t))-a_d) + \vspace{0.1cm} \\
@@ -395,7 +445,7 @@ To implement the phase and amplitude tracking control algorithms discussed in \C
            \hline
     \end{tabular}
     \vspace{0.1cm}
-    \caption{Different structures of resonance-based fatigue analysis machines. Freq. stands for the maximum resonance frequency used in the experiments. Acc. stands for the worst amplitude accuracy.}
+    \caption{Different structures of resonance-based fatigue testing machines. Freq. stands for the maximum resonance frequency used in the experiments. Acc. stands for the worst amplitude accuracy.}
     \label{T_machine_types}
 \end{sidewaystable}
 
@@ -416,7 +466,7 @@ where $u_1 = \omega$ (the frequency of the excitation force) and $u_2(t) = a$ (t
 x_1(t) \rightarrow x_{1d}(t)=a_d\sin(\omega_d t+\phi_d) .
 \label{E_obj}
 \end{equation}
-Equations \Cref{E_plant_no_output_with_control_input} describe a time-varying, nonlinear, and multivariable system that does not follow any conventional control-oriented form, making it unclear how to design the two control inputs $u_1(t)$ and $u_2(t)$ to achieve the objective in \Cref{E_obj}. To address this challenge, an alternative control-oriented model is developed in \Cref{S_identification}, based on identification methods applied to \Cref{E_plant_no_output_with_control_input}, to facilitate controller design. This model is derived from offline numerical simulations leading to several sources of uncertainties because of the potential different behavior of the the model \Cref{E_plant_no_output_with_control_input} and real system. Hence, a robust control strategy is required to manage uncertainties such as unmodeled dynamics. To this end, a sliding-mode control law is developed for the identified system in \Cref{S_SMC_design}, ensuring robust closed-loop stability.
+Equations \Cref{E_plant_no_output_with_control_input} describe a time-varying, nonlinear, and multivariable system that does not follow any conventional control-oriented form, making it unclear how to design the two control inputs $u_1(t)$ and $u_2(t)$ to achieve the objective in \Cref{E_obj}. To address this challenge, an alternative control-oriented model is developed in \Cref{S_identification}, based on identification methods applied to \Cref{E_plant_no_output_with_control_input}, to facilitate controller design. This model is derived from offline numerical simulations leading to several sources of uncertainties because of the potential different behavior of the model \Cref{E_plant_no_output_with_control_input} and real system. Hence, a robust control strategy is required to manage uncertainties such as unmodeled dynamics. To this end, a sliding-mode control law is developed for the identified system in \Cref{S_SMC_design}, ensuring robust closed-loop stability.
 
 \subsection{Control-oriented model} \label{S_identification}
 
@@ -654,7 +704,7 @@ where $J_x$ and $J_\phi$ represent the displacement and phase tracking performan
 
 \section{Simulation results}
 
-The numerical simulations are performed using the parameters listed in \Cref{T_parameters}, and the corresponding results are presented in \Cref{F_sim_frequency,F_sim_displacement}. The simulation runs for 180 seconds, with an abrupt reduction in the stiffness parameter $k$ from 256 N/m to 236 N/m at 120 seconds to simulate the appearance of a crack, thereby replicating realistic test conditions. This change is intended to evaluate the controllers' robustness in tracking both phase and displacement. The objective is to track the desired phase $\phi_d = 90^\circ$ to minimize energy consumption by operating at the peak amplitude of the Bode diagram, as shown in \Cref{F_Bode}. Note that the variable-step {\fontfamily{qcr}\selectfont ode45} solver is used for the numerical simulation, with a maximum sampling time of one millisecond to reduce discretization effects. In this case, the TC is implemented using the explicit discretization \Cref{E_TC_a2_explicit}, without showing any chattering.
+The numerical simulations are performed using the parameters listed in \Cref{T_parameters}, and the corresponding results are presented in \Cref{F_sim_frequency,F_sim_displacement}. The simulation runs for 180 seconds, with an abrupt reduction in the stiffness parameter $k$ from 256 N/m to 236 N/m at 120 seconds to simulate the appearance of a crack, thereby replicating realistic test conditions. This change is intended to evaluate the controllers' robustness in tracking both phase and displacement. The objective is to track the desired phase $\phi_d = 90^\circ$ to minimize energy consumption by operating at the peak amplitude of the Bode diagram, as shown in \Cref{F_Bode}. Note that the variable step size {\fontfamily{qcr}\selectfont ode45} solver is used for the numerical simulation, with a maximum sampling time of one millisecond to reduce discretization effects. In this case, the TC is implemented using the explicit discretization \Cref{E_TC_a2_explicit}, without showing any chattering.
 According to \Cref{F_sim_frequency}, all controllers can achieve the desired $\phi_d = 90^\circ$ even in the presence of the perturbation at $t = 120$~s. Among the controllers, the TC achieves the desired phase slightly faster than the other two controllers, and its phase tracking is less affected by the perturbation at $t = 120$~s. Comparing the transient responses, the PID controller appears to exhibit the largest overshoots and the slowest convergence rate.
 The other control objective is to track a displacement of 1.5~mm, as illustrated in \Cref{F_sim_displacement}. This value is determined by specialists in the fatigue analysis community for the selected specimen made of carbon fiber composite materials (see \Cref{F_setup}). The system under study is multivariable, meaning that the frequency and displacement control channels influence each other. Additionally, as shown in \Cref{F_Bode}, the amplitude changes significantly around the resonance frequency $\omega_d$. As a result, large oscillations are observed in \Cref{F_sim_displacement}, particularly during the transient phase. According to the results, all control methods achieve the desired displacement of 1.5~mm in the steady state. However, the TC and fuzzy methods show better responses than the PID. In addition, these two controllers demonstrate better disturbance rejection compared to the PID controller. Note that, as detailed in \Cref{S_tuning}, special attention is paid to parameter tuning to avoid any displacement overshoot that could cause early damage to the specimen and result in noncompliance with testing standards. As a result, no significant displacement overshoot is observed in \Cref{F_sim_displacement}. The quantified results corresponding to the simulations are presented in \Cref{T_J_simulation}, indicating that the TC and fuzzy controllers exhibit smaller tracking errors in both phase and displacement compared to the PID controller. This is likely due to the nonlinear dynamics present in the system, which cannot be effectively handled by a linear control law such as the PID.
 
@@ -684,7 +734,7 @@ The experimental setup is illustrated in \Cref{F_setup}. A specimen made of carb
     \label{F_setup}
 \end{figure}
 
-The parameters calculated in \Cref{T_parameters} are directly applied in the practical experiments without any retuning, to demonstrate the robustness of the controllers against perturbations present in a real setup. As in \Cref{S_simulations}, the first control objective is to track the desired displacement of 1.5~mm. However, the other objective is to track a desired phase of $89^\circ$, which differs from the $90^\circ$ used in the simulations. This adjustment is necessary because tracking exactly $90^\circ$ tends to induce instability; according to the Bode diagram in \Cref{F_Bode}, amplification is maximized at this phase, and with the relatively large sampling time of one second, the controllers cannot respond quickly enough to compensate for the resulting extreme displacement amplifications. In addition, due to this large sampling time, the TC cannot be implemented using explicit discretization, as it leads to numerical chattering. Instead, a deadbeat implementation is employed to address this issue (see \Cref{S_appendix} for the theory of deadbeat implementation). In a real fatigue testing facility, cracks typically appear in the specimen after a prolonged period (often several weeks), causing changes in its resonance frequency. Under such conditions, the controllers must be robust enough to continue tracking the desired phase and adapt to the new resonance frequency.
+The parameters calculated in \Cref{T_parameters} are directly applied in the practical experiments without any retuning, to demonstrate the robustness of the controllers against perturbations present in a real setup. As in \Cref{S_simulations}, the first control objective is to track the desired displacement of 1.5~mm. However, the other objective is to track a desired phase of $89^\circ$, which differs from the $90^\circ$ used in the simulations. This adjustment is necessary because tracking exactly $90^\circ$ tends to induce instability; according to the Bode diagram in \Cref{F_Bode}, amplification is maximized at this phase, and with the relatively large sampling time of one second, the controllers cannot respond quickly enough to compensate for the resulting extreme displacement amplifications. In addition, due to this large sampling time, the TC cannot be implemented using explicit discretization, as it leads to numerical chattering. Instead, a deadbeat implementation is employed to address this issue (see \Cref{S_appendix} for the theory of deadbeat implementation). In a real fatigue testing facility, cracks typically appear in the specimen after a prolonged period (often several hours), causing changes in its resonance frequency. Under such conditions, the controllers must be robust enough to continue tracking the desired phase and adapt to the new resonance frequency.
 
 
 
@@ -950,7 +1000,8 @@ received the Ph.D. degree in control engineering from the University of Tabriz, 
 
 \vspace{11pt}
 
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{avatar.png}}]{Etienne PESSARD}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.45in,clip,keepaspectratio]{Etienne.jpg}}]{Etienne PESSARD} was born in France. He received the Ph.D. degree in Mechanics and Materials in 2009. He then worked as a lecturer and researcher for 10 years, during which he contributed to numerous projects, including FUI QUAUSI, ANR DEFISURF, IRT Jules Verne projects FATAL and FASICOM. In parallel, he co-supervised several industrial Ph.D. theses focused on the fatigue resistance of metals. After a one-year experience as a visiting professor at École Polytechnique de Montréal, his research activities shifted toward vibrational fatigue testing using shakers. Since 2024, he has been a Professor at the Arts et Métiers Institute of Technology.
+
 \end{IEEEbiography}
 
 \vspace{11pt}

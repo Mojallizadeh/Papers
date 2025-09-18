@@ -16,45 +16,45 @@ Warning--empty author and editor in DIN_standard
 Warning--missing publisher in DIN_standard
 
 Done.
-You've used 42 entries,
+You've used 43 entries,
             4087 wiz_defined-function locations,
-            1113 strings with 15970 characters,
-and the built_in function-call counts, 30799 in all, are:
-= -- 2584
-> -- 669
+            1117 strings with 16059 characters,
+and the built_in function-call counts, 31132 in all, are:
+= -- 2606
+> -- 673
 < -- 250
-+ -- 384
-- -- 122
-* -- 1469
-:= -- 4719
-add.period$ -- 83
-call.type$ -- 42
++ -- 386
+- -- 123
+* -- 1478
+:= -- 4776
+add.period$ -- 85
+call.type$ -- 43
 change.case$ -- 38
 chr.to.int$ -- 522
-cite$ -- 45
-duplicate$ -- 2245
-empty$ -- 2422
-format.name$ -- 147
-if$ -- 7217
+cite$ -- 46
+duplicate$ -- 2272
+empty$ -- 2468
+format.name$ -- 148
+if$ -- 7298
 int.to.chr$ -- 0
-int.to.str$ -- 42
-missing$ -- 381
-newline$ -- 165
-num.names$ -- 41
-pop$ -- 820
+int.to.str$ -- 43
+missing$ -- 386
+newline$ -- 168
+num.names$ -- 42
+pop$ -- 836
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 2462
+skip$ -- 2492
 stack$ -- 0
 substring$ -- 1333
-swap$ -- 1851
+swap$ -- 1864
 text.length$ -- 76
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 42
+type$ -- 43
 warning$ -- 3
-while$ -- 120
-width$ -- 44
-write$ -- 453
+while$ -- 121
+width$ -- 45
+write$ -- 460
 (There were 3 warnings)
