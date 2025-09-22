@@ -1,36 +1,60 @@
-\documentclass[lettersize,journal]{IEEEtran}
-% Essential packages
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb,amsfonts,empheq}
-\usepackage{graphicx}
-\usepackage{textcomp}
-\usepackage{url}
-\usepackage{verbatim}
-\usepackage{array}
-\usepackage{rotating}
-\usepackage{stfloats}
-\usepackage{cite}
-\usepackage{soul}
+%% 
+%% Copyright 2007-2024 Elsevier Ltd
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.3 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%% SP 2008/03/01
+%% $Id: elsarticle-template-num.tex 249 2024-04-06 10:51:24Z rishi $
+%%
+\documentclass[preprint,12pt]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
 \usepackage[margin=2cm]{geometry}
-\usepackage{colortbl}
-% Algorithm packages
-\usepackage{algorithm}
-\usepackage{algorithmic}
-
-% Subfigures
-\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-
-% MATLAB code formatting
-\usepackage{matlab-prettifier}
-
-% Hyperlinks and references
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amsmath,amssymb,amsfonts,empheq}
 \usepackage{hyperref}
 \usepackage{cleveref}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{rotating}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
 
-% Adjust box
-\usepackage{adjustbox}
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+%% \usepackage{lineno}
 
-% Custom math operators
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\sat}{sat}
 \DeclareMathOperator{\gsgn}{gsgn}
@@ -47,13 +71,12 @@
 \DeclareMathOperator{\sgnsingle}{sgn}
 \DeclareMathOperator{\sgnset}{\overline{sgn}}
 \DeclareMathOperator{\proj}{proj}
-
 % Cleveref name formats
 \crefname{equation}{}{}
 \Crefname{figure}{Fig.}{Figs.}
 \crefname{section}{Sec.}{Secs.}
 \crefname{table}{Table}{Tables}
-
+\sloppy
 % Theorem environments
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
@@ -63,41 +86,107 @@
 \newtheorem{corollary}{Corollary}
 \newtheorem{example}{Example}
 
-
-\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
-% updated with editorial comments 8/9/2021
+\journal{Control Engineering Practice}
 
 \begin{document}
 
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \affiliation for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \affiliation{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+%% \fntext[label3]{}
+
 \title{Control of resonance-based fatigue testing machines}
 
-\author{Mohammad Rasool MOJALLIZADEH, Benoît PICHEREAU, and Etienne PESSARD
-        % <-this % stops a space
-\thanks{The authors are with the Arts et Métiers Institute of Technology, LAMPA, F-49035 Angers, France (e-mails: \{mohammad-rasool.mojallizadeh, benoit.pichereau, etienne.pessard\} @ ensam.eu)}
-\thanks{Corresponding author: Mohammad Rasool MOJALLIZADEH}
-}
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \affiliation[label1]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+%%
+%% \affiliation[label2]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
 
-% The paper headers
-\markboth{Control Engineering Practice}%
-{MOJALLIZADEH \MakeLowercase{\textit{et al.}}: Control of resonance-based fatigue testing machines}
+\author[1]{Mohammad Rasool MOJALLIZADEH\corref{cor1}}
+\ead{mohammad-rasool.mojallizadeh@ensam.eu}
+\cortext[cor1]{Corresponding author}
 
-%\IEEEpubid{0000--0000/00\$00.00~\copyright~2021 IEEE}
-% Remember, if you use this you must call \IEEEpubidadjcol in the second
-% column for its text to clear the IEEEpubid mark.
+\author[1]{Benoît PICHEREAU}
+\ead{benoit.pichereau@ensam.eu}
 
-\maketitle
+\author[1]{Etienne PESSARD}
+\ead{etienne.pessard@ensam.eu}
 
+
+
+\address[1]{Arts et Métiers Institute of Technology, LAMPA, F-49035 Angers, France}
+
+%% Abstract
 \begin{abstract}
+%% Text of abstract
 This work investigates the design of controllers for resonance-based fatigue testing machines. Unlike conventional systems, resonance-based machines require smaller setups, consume less energy, and significantly reduce test duration by maintaining the specimen at its natural excitation frequency. Achieving this requires a robust control system capable of driving the system to its resonance frequency while rejecting disturbances such as temperature variations and unmodeled dynamics—particularly those caused by crack formation, which alters the specimen’s properties, including its resonance frequency, during testing. A tutorial-style review of state-of-the-art control systems developed for resonance-based fatigue machines is presented in terms of the resonance frequency and displacement tracking. Various control design techniques are discussed for these models, including proportional-integral-derivative (PID) and fuzzy controllers. Subsequently, a control-oriented model is developed using an identification method, which is essential for any model-based controller design. However, this model is subject to uncertainties and perturbations, making control design more challenging. To address this, a sliding-mode controller (SMC) based on the twisting algorithm is proposed to ensure robust stability. Comparative analyses using both numerical simulations and experimental results demonstrate the advantages of the proposed twisting controller over conventional controllers, namely PI and fuzzy controllers.
 \end{abstract}
 
-\begin{IEEEkeywords}
-Resonance-based fatigue testing, control design, identification, sliding-mode control, twisting controller
-\end{IEEEkeywords}
+%%Graphical abstract
+\begin{graphicalabstract}
+\includegraphics{F_experiments.pdf}
+\end{graphicalabstract}
 
+%%Research highlights
+\begin{highlights}
+\item The control design for a resonance-based fatigue testing machine is studied.
+\item Several controllers are designed and compared.
+\item An experimental setup is developed for this study, and experimental results are presented.
+\end{highlights}
+
+%% Keywords
+\begin{keyword}
+Resonance-based fatigue testing \sep control design \sep sliding-mode control \sep twisting algorithm
+\end{keyword}
+
+\end{frontmatter}
+
+%% Add \usepackage{lineno} before \begin{document} and uncomment 
+%% following line to enable line numbers
+%% \linenumbers
+
+%% main text
+%%
+\twocolumn
+%% Use \section commands to start a section
 \section{Introduction} \label{S_introduction}
-\IEEEPARstart{F}{atigue}
-analysis plays a crucial role in designing durable and long-lasting components, helping to prevent unexpected failures and enhance overall safety. Experimental fatigue testing has been used since the 19th century \cite{radaj2007ermudungsfestigkeit}.
+
+
+
+Fatigue analysis plays a crucial role in designing durable and long-lasting components, helping to prevent unexpected failures and enhance overall safety. Experimental fatigue testing has been used since the 19th century \cite{radaj2007ermudungsfestigkeit}.
  The design of fatigue-loaded structures is often based on the concept of an endurance limit (at 1E6 or 1E7 cycles), defined as the maximum load below which a structure is assumed to have an infinite lifetime. However, many studies have shown that some materials and structures do not exhibit a clear endurance limit, making its existence a matter of debate. Consequently, the reliable characterization of fatigue resistance at very high cycle numbers ($\geq$ 1E7 cycles), using rapid and energy-efficient testing methods, remains an open problem. To address these challenges, resonance-based fatigue testing machines have been developed. These machines apply dynamic load cycles near the specimen’s resonance frequency (i.e., the material under investigation), which significantly reduces power consumption. Moreover, since the resonance frequency is generally high, the required number of load cycles can be completed in a much shorter time compared to traditional fatigue testing methods. Resonance-based fatigue testing machines are designed with various architectures to accommodate a wide range of materials and structures, both at reduced and real scales. These include applications in concrete \cite{SCHRAMM2024117045}, railroad rails \cite{SCHNEIDER2018171,herrmann2018simulation_Thesis}, pipes \cite{Santus_2024}, packaging \cite{Rouillard_2000}, and electronic PCB boards \cite{DORANGA2024115368,ikehara2010development}.
 
 One method for testing large-scale structures involves using imbalance motors mounted on tension springs to excite concrete specimens \cite{SCHRAMM2024117045}, as well as axially loaded components such as railroad rails \cite{SCHNEIDER2018171,herrmann2018simulation_Thesis} and pipes \cite{Santus_2024}. In these studies, the resonance frequency is determined offline using finite element methods (FEM) and manually set by the user. However, this approach does not account for automatic resonance frequency tracking, which can vary during testing and lead to performance degradation. To address synchronization and frequency tracking, a time-clocked state machine combined with a PI controller is employed \cite{SCHRAMM2024117045,SCHNEIDER2018171,herrmann2018simulation_Thesis}. According to \cite{SCHNEIDER2018171}, operating near the resonance frequency can cause closed-loop instability; therefore, the excitation frequency is typically maintained at 90\% of the resonance frequency. Alternative resonance-based fatigue testing systems utilize electrodynamic \cite{Su2014,George_2006,CESNIK20125370,gautrelet2020resonance,DORANGA2024115368,Rouillard_2000}, electro-hydraulic\footnote{PLG-100 is a commercial fatigue testing machine based on electro-hydraulic shakers \cite{met11101512}.} \cite{Ji_2010,Rouillard_2000}, or ultrasonic shakers \cite{Stanzl01041980_fast_ultrasonic}. These systems are generally applied to reduced-scale specimens, such as stainless steel samples \cite{Gautrelet_2020}, electronic boards \cite{Su2014,feng2003development_Japaneese}, and packaging components \cite{Rouillard_2000}. Additionally, multi-axial fatigue testing has been demonstrated using these shaker technologies \cite{George_2006,Dupke2026}.
@@ -113,7 +202,6 @@ Numerical simulations and realistic experiments are conducted to evaluate the pe
     \centering
     \begin{tabular}{|c|l|}
         \hline
-        \textbf{Abbreviation} & \textbf{Definition} \\ \hline
         SMC & Sliding Mode Control \\ \hline
         TC & Twisting Controller \\ \hline
         PID & Proportional-Integral-Derivative \\ \hline
@@ -128,7 +216,7 @@ Numerical simulations and realistic experiments are conducted to evaluate the pe
     \label{T_nomenclature}
 \end{table}
 
-\begin{table}[h]
+\begin{table*}
     \centering
     \begin{tabular}{|l|}
         \hline
@@ -175,7 +263,7 @@ $q_1$, $q_2$: two intermediate terms used in $\lambda$ \\
     \vspace{0.1cm}
     \caption{Mathematical notation used in the manuscript}
     \label{T_notation}
-\end{table}
+\end{table*}
 
 
 \section{Review of the control systems developed for resonance-based fatigue testing machines} \label{S_control_system}
@@ -228,11 +316,11 @@ f(t)=a\sin(\omega t),
 \end{equation}
 where $a$ denotes the amplitude of the force generated by the actuator (shaker). However, since $\omega_d$ is only approximately known and varies over time in practice, generating the excitation force using \Cref{E_F_resonance} is impractical. To address this limitation, rather than relying on such an open-loop control law, phase-tracking closed-loop control strategies are employed in the literature, as discussed in \Cref{S_frequency_controller}.
 
-\begin{figure}
+\begin{figure*}
     \centering    \includegraphics[width=\linewidth]{F_bode.png}
     \caption{Bode diagram of the resonance dynamics for the parameters $m=0.01772$~kg, $k=256$~N/m, and $b=0.12$~Ns/m}
     \label{F_Bode}
-\end{figure}
+\end{figure*}
 
 
 
@@ -245,7 +333,9 @@ Assuming that the specimen resonance frequency $\omega_d$ is known, one may use 
 
 The PID control law reads as \cite{kuo}:
 \begin{equation}
-u_1(t)\triangleq\omega(t)=k_p (\phi(t)-\phi_d)+ k_i \int (\phi(t)-\phi_d) dt+k_d \dot{\phi}(t), 
+\begin{array}{l}
+u_1(t)\triangleq\omega(t)=k_p (\phi(t)-\phi_d)+ \\ k_i \int (\phi(t)-\phi_d) dt+  k_d \dot{\phi}(t), 
+\end{array}
 \label{E_frequency_PID}
 \end{equation}
 where, $u_1(t)$ denotes the closed-loop control input, which corresponds to the adjusted excitation frequency. The constants $k_p$, $k_i$, and $k_d$ are the proportional, integral, and derivative gains of the PID controller, respectively. The variable $\phi(t)$ represents the phase difference between the input force and the output displacement $x_1(t)$ (see \Cref{S_phase_detection} for phase detection methods), and $\phi_d$ is the desired phase, typically set to $\pi/2$. For $\zeta \neq 0$, $\phi_d \approx \pi/2$, as indicated in \Cref{F_Bode}. To the best of the authors' knowledge, the tuning of PID controller parameters for this specific application has not been thoroughly addressed in the literature, and the selection of appropriate gain values remains unclear (see also the PI controller design for phase tracking in piezoelectric systems presented in \cite{s22176378}).
@@ -272,11 +362,11 @@ In addition to the PID controller introduced earlier, the application of fuzzy c
 \end{figure}
 
 
-\begin{figure}
+\begin{figure*}
     \centering    \includegraphics[width=\linewidth]{Fuzzy_rules.png}
     \caption{Fuzzy rules used for both phase and displacement tracking loops}
     \label{F_fuzzy_rules}
-\end{figure}
+\end{figure*}
 
 The fuzzy controller illustrated in \Cref{F_fuzzy_diagram} is based on the Mamdani fuzzy inference system \cite{Ross2010}. It employs the same set of fuzzy rules for both the phase and displacement tracking loops, with each loop distinguished by its own scaling parameters ($\alpha_1, \alpha_2, \alpha_3$). The controller takes the error and its time derivative as inputs to compute the control signals. Notably, the same membership functions are applied to all input (error and its derivative) and output (control signal) variables, as shown in \Cref{F_fuzzy_memberships}.
 
@@ -341,7 +431,7 @@ From the Newton's second law one has $f(t)=m_0 a_0(t)$, where $a_0(t)$ is the ac
 $\blacksquare$
 
 
-\begin{table}
+\begin{table*}
     \centering
     \begin{tabular}{|l|l|} \hline
      Ref.    &  Phase tracking controller  \\ \hline
@@ -356,7 +446,7 @@ $\blacksquare$
     \vspace{0.1cm}
     \caption{Phase tracking controllers developed for the resonance-based fatigue testing machines}
     \label{T_frequency_seeking}
-\end{table}
+\end{table*}
 
 
 \subsection{Displacement tracking} \label{S_amplitude_tracking}
@@ -384,8 +474,8 @@ x_1(t)=a_0 \frac{m}{kb^2} \sin(\omega_d t+\pi/2).
 Assuming that $a_d$ is the desired amplitude of $x_1$, the amplitude of the input force can be calculated as follows.
 \begin{equation}
 \begin{array}{l}
-x_1(t)=a_0 \frac{m}{kb^2} \sin(\omega_d t+\pi/2) = a_d  \sin(\omega_d t+\pi/2) \rightarrow \vspace{0.1cm} \\ 
-a_0=a_d \frac{kb^2}{m}. 
+x_1(t)=a_0 \frac{m}{kb^2} \sin(\omega_d t+\pi/2) =\vspace{0.1cm} \\ 
+ a_d  \sin(\omega_d t+\pi/2)  \rightarrow  a_0=a_d \frac{kb^2}{m}. 
 \end{array}
 \label{E_x_1_steady_a0}
 \end{equation}
@@ -414,7 +504,7 @@ To implement the phase and amplitude tracking control algorithms discussed in \C
 
 
 
-\begin{table*}
+\begin{sidewaystable}
 \center
     \begin{tabular}{|l|l|l|l|c|c|} \hline
      Ref.   &  Actuator  & Sensor & Computer &  Freq. &  Acc. \\ \hline
@@ -445,7 +535,7 @@ To implement the phase and amplitude tracking control algorithms discussed in \C
     \vspace{0.1cm}
     \caption{Different structures of resonance-based fatigue testing machines. Freq. stands for the maximum resonance frequency used in the experiments. Acc. stands for the worst amplitude accuracy.}
     \label{T_machine_types}
-\end{table*}
+\end{sidewaystable}
 
 
 
@@ -455,7 +545,8 @@ This section aims to develop a more reliable control system for resonance-based 
 \begin{subequations}
   \begin{empheq}[left=\empheqlbrace]{align}
 \dot{x}_1(t)&=x_2(t) \label{E_plant_no_output_with_control_input_1} \\
-\dot{x}_2(t)&=-\frac{k}{m} x_1(t) -\frac{b}{m} x_2(t) + \frac{u_2}{m} \sin(u_1 t) , \label{E_plant_no_output_with_control_input_2} 
+\dot{x}_2(t)&=-\frac{k}{m} x_1(t) -\frac{b}{m} x_2(t) + \notag \\
+ &\frac{u_2}{m} \sin(u_1 t) , \label{E_plant_no_output_with_control_input_2} 
   \end{empheq}
 \label{E_plant_no_output_with_control_input}
 \end{subequations}
@@ -604,8 +695,8 @@ Substituting \Cref{E_TC_amplitude} into \Cref{E_plant_identified_model_e} gives:
 \begin{subequations}
   \begin{empheq}[left=\empheqlbrace]{align}
 \dot{e}_1(t)&=e_2(t) \label{E_plant_closed_loop_a_plitude_1} \\
-\dot{e}_2(t)& = (p-\bar{p}\frac{q}{\bar{q}})(e_2+a_d)-q(b_1 \sgn(e_1) + \notag\\
-& b_2 \sgn(e_2)) , \label{E_plant_closed_loop_plitude_2} 
+\dot{e}_2(t)& = (p-\bar{p}\frac{q}{\bar{q}})(e_2+a_d)-  \notag \\
+& q(b_1 \sgn(e_1)  + b_2 \sgn(e_2)) , \label{E_plant_closed_loop_plitude_2} 
   \end{empheq}
 \label{E_plant_closed_loop_plitude}
 \end{subequations}
@@ -650,7 +741,7 @@ The developed twisting control signals $u_1$ and $u_2$ in the continuous-time se
 
 Following the literature, the PID controller has been widely employed in nearly all references where closed-loop phase tracking is required. However, its application to amplitude tracking has not yet been explored. The phase and amplitude tracking PID controllers described in \Cref{E_frequency_PID,E_PID_amplitude} require three parameters: $k_p$, $k_i$, and $k_d$. Nevertheless, the selection of these parameters to ensure control objectives such as stability remains unaddressed in the existing literature.
 
-\begin{table}
+\begin{table*}[ht]
     \centering
     \begin{tabular}{|l|c|c|} \hline 
 \cellcolor{gray}  & Phase tracking loop  & Displacement tracking loop \\ \hline
@@ -661,7 +752,7 @@ Fuzzy & $\alpha_{1,2,3}=25, 5, 20$  & $\alpha_{1,2,3}=0.3, 0.1, 0.4$  \\  \hline
     \vspace{0.1cm}
     \caption{Controllers' parameters tuned based on the objective function \Cref{E_objective}}
     \label{T_parameters}
-\end{table}
+\end{table*}
 
 
 \subsection{Fuzzy controller} \label{S_designed_fuzzy}
@@ -706,17 +797,17 @@ The numerical simulations are performed using the parameters listed in \Cref{T_p
 According to \Cref{F_sim_frequency}, all controllers can achieve the desired $\phi_d = 90^\circ$ even in the presence of the perturbation at $t = 120$~s. Among the controllers, the TC achieves the desired phase slightly faster than the other two controllers, and its phase tracking is less affected by the perturbation at $t = 120$~s. Comparing the transient responses, the PID controller appears to exhibit the largest overshoots and the slowest convergence rate.
 The other control objective is to track a displacement of 1.5~mm, as illustrated in \Cref{F_sim_displacement}. This value is determined by specialists in the fatigue analysis community for the selected specimen made of carbon fiber composite materials (see \Cref{F_setup}). The system under study is multivariable, meaning that the frequency and displacement control channels influence each other. Additionally, as shown in \Cref{F_Bode}, the amplitude changes significantly around the resonance frequency $\omega_d$. As a result, large oscillations are observed in \Cref{F_sim_displacement}, particularly during the transient phase. According to the results, all control methods achieve the desired displacement of 1.5~mm in the steady state. However, the TC and fuzzy methods show better responses than the PID. In addition, these two controllers demonstrate better disturbance rejection compared to the PID controller. Note that, as detailed in \Cref{S_tuning}, special attention is paid to parameter tuning to avoid any displacement overshoot that could cause early damage to the specimen and result in noncompliance with testing standards. As a result, no significant displacement overshoot is observed in \Cref{F_sim_displacement}. The quantified results corresponding to the simulations are presented in \Cref{T_J_simulation}, indicating that the TC and fuzzy controllers exhibit smaller tracking errors in both phase and displacement compared to the PID controller. This is likely due to the nonlinear dynamics present in the system, which cannot be effectively handled by a linear control law such as the PID.
 
-\begin{figure}
+\begin{figure*}
     \centering    \includegraphics[width=\linewidth]{F_frequency_sim.png}
     \caption{Simulation: frequency and the phase ($k=256 \rightarrow 236$ N/m at t=120~s)}
     \label{F_sim_frequency}
-\end{figure}
+\end{figure*}
 
-\begin{figure}
+\begin{figure*}
     \centering    \includegraphics[width=\linewidth]{F_displacement_sim.png}
     \caption{Simulation: displacement and the force ($k=256 \rightarrow 236$ N/m at t=120~s)}
     \label{F_sim_displacement}
-\end{figure}
+\end{figure*}
 
 
 
@@ -776,7 +867,7 @@ The quantified results corresponding to the experiments are given in \Cref{T_J_e
 
 
 
-\begin{table}
+\begin{table*}
     \centering
     \begin{tabular}{|l|c|c|c|c|} \hline
        \cellcolor{gray}  &  TC (deadbeat) &  TC (explicit)   & PI & fuzzy   \\  \hline 
@@ -787,7 +878,7 @@ The quantified results corresponding to the experiments are given in \Cref{T_J_e
     \vspace{0.1cm}
     \caption{Experiment: displacement and phase tracking performances}
     \label{T_J_experiment}
-\end{table}
+\end{table*}
 
 
 
@@ -800,9 +891,9 @@ A key limitation observed during the experiments was the inability to maintain a
 
 \section*{Acknowledgments}
 
-The authors gratefully acknowledge the support provided by Institut Carnot ARTS in France for this research.
+This work did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
 
-\appendices
+\appendix
 \section{Deadbeat implementation of the twisting controller}  \label{S_appendix}
 
 As mentioned in \Cref{R_chattering}, for a small sampling time used in the numerical simulations, the twisting controller can be implemented using the explicit discretization. However, for the practical experiments, the sampling time was one second and the explicit discretization led to the chattering. The deadbeat implementation is explained here only for the phase tracking loop which can be extended to the phase tracking loop. Note that the deadbeat implementation is originally developed for another sliding-mode algorithm, namely, super-twisting algorithm \cite{MOJALLIZADEH_Franklin}, and is adopted for the twisting algorithm as follows. Consider again the nominal system's model \Cref{E_plant_identified_model} and the TC \Cref{E_TC} in the continuous-time setting: 
@@ -811,7 +902,8 @@ As mentioned in \Cref{R_chattering}, for a small sampling time used in the numer
 \dot{z}_1(t)&=z_2(t) \label{E_plant_identified_model_1a} \\
 \dot{z}_2(t)&=pz_2+qu_1(t)  \label{E_plant_identified_model_2a} 
 \\
-u_1(t) &=  -\frac{p}{q}z_2 -b_1 \sgn(z_1) -b_2 \sgn(z_2). \label{E_TC_a}
+u_1(t) &=  -\frac{p}{q}z_2 -b_1 \sgn(z_1) - \notag \\
+&b_2 \sgn(z_2). \label{E_TC_a}
   \end{empheq}
 \label{E_plant_identified_modela}
 \end{subequations}
@@ -831,7 +923,8 @@ To implement the twisting control law \Cref{E_TC_a} on digital computers, a time
 z_{1,k} &= h z_{2,k} + z_{1,k-1} \label{E_plant_identified_model_1a2_explicit} \\
 z_{2,k} &=h q u_k + z_{2,k-1} , \label{E_plant_identified_model_2a2_explicit} 
 \\
-u_k &=  -b_1 \sgn(z_{1,k-1}) -b_2 \sgn(z_{2,k-1}), \label{E_TC_a2_explicit}
+u_k &=  -b_1 \sgn(z_{1,k-1}) - \notag  \\ 
+&b_2 \sgn(z_{2,k-1}), \label{E_TC_a2_explicit}
   \end{empheq}
 \label{E_plant_identified_modela2_explicit}
 \end{subequations}
@@ -840,8 +933,8 @@ where $h$ is the sampling time, and the subscript $k$ indicate the zero-order ho
   \begin{empheq}[left=\empheqlbrace]{align}
 z_{1,k}&=h{z_{2,k-1}} + z_{1,k-1} \label{E_TC_plant_1_discrete_deadbeat} \\
 z_{2,k} &=hu_k +z_{2,k-1} \label{E_TC_plant_2_discrete_deadbeat} \\
-u_k    &\in -b_1  \sgnset(z_{1,k-1}) 
-  -b_2\sgnsingle(z_{2,k-1}), \label{E_TC_discrete_control_deadbeat} 
+u_k    &\in -b_1  \sgnset(z_{1,k-1})  - \notag  \\
+& b_2\sgnsingle(z_{2,k-1}), \label{E_TC_discrete_control_deadbeat} 
   \end{empheq}
 \label{E_TC_discrete_deadbeat}
 \end{subequations}
@@ -861,8 +954,8 @@ Substituting \Cref{E_TC_discrete_control_deadbeat} into \Cref{E_TC_plant_2_discr
   \begin{empheq}[left=\empheqlbrace]{align}
 z_{1,k}&=h{z_{2,k-1}} + z_{1,k-1} \label{E_TC_plant_1_discrete_deadbeat_C1} \\
 z_{2,k} &=-h b_1  \sgnset(z_{1,k-1}) 
-  -h b_2\sgnsingle(z_{2,k-1}) + \notag \\
-  & z_{2,k-1} .\label{E_TC_plant_2_discrete_deadbeat_C2}
+  - \notag \\
+  &  h b_2\sgnsingle(z_{2,k-1}) + z_{2,k-1} .\label{E_TC_plant_2_discrete_deadbeat_C2}
   \end{empheq}
 \label{E_TC_plant_2_discrete_deadbeat_C}
 \end{subequations}
@@ -871,8 +964,8 @@ The term $\sgnset(z_{1,k-1})$ is a set which should be assigned to a single valu
 \begin{array}{l}
 z_{1,k} 
  \in -h^2b_1 \sgnset(z_{1,{k}})- 
-h^2b_2\sgnsingle(z_{2,k-1}) \vspace{0.1cm} \\
-+hz_{2,k-1} +z_{1,k-1} .
+\vspace{0.1cm} \\
+h^2b_2\sgnsingle(z_{2,k-1}) +hz_{2,k-1} +z_{1,k-1} .
 \end{array}
 \label{E_closed_loop_x1}
 \end{equation}
@@ -924,7 +1017,8 @@ Substituting \Cref{E_TC_discrete_control_explicit_solved} into \Cref{E_TC_plant_
 \begin{subequations}
   \begin{empheq} [left=\empheqlbrace]{align}
 z_{1,k}&=hz_{2,k} + z_{1,k-1} \label{E_TC_closed_loop_discrete1_lambda} \\
-z_{2,k} & = -hb_1  \lambda_k- hb_2\sgnsingle(z_{2,k-1}) +z_{2,k-1} .\label{E_TC_closed_loop_discrete2_lambda} 
+z_{2,k} & = -hb_1  \lambda_k- hb_2\sgnsingle(z_{2,k-1}) + \notag \\
+& z_{2,k-1} .\label{E_TC_closed_loop_discrete2_lambda} 
   \end{empheq}
 \label{E_TC_closed_loop_discrete_lambda}
 \end{subequations}
@@ -951,8 +1045,9 @@ It means that once the system arrives in this region, just one step after, at $k
 \begin{array}{l}
 q_{2,k+1}=\frac{-h^2b_2\sgnsingle(z_{1,k}/h)-z_{1,k}}{h^2b_1} =0.
 \vspace{0.2cm} \\
-q_{1,k+1}=\frac{-h^2b_2\sgnsingle(z_{2,k})+hz_{2,k}+z_{1,k}}{h^2b_1} =  \frac{-h^2b_2\sgnsingle(z_{1,k}/h)}{h^2b_1} \vspace{0.2cm}\\
-=\frac{-h^2b_2\sgnsingle(z_{1,k}/h)-z_{1,k}}{h^2b_1}=q_{2,k}.
+q_{1,k+1}=\frac{-h^2b_2\sgnsingle(z_{2,k})+hz_{2,k}+z_{1,k}}{h^2b_1} \\
+= \frac{-h^2b_2\sgnsingle(z_{1,k}/h)}{h^2b_1}= \vspace{0.2cm}\\
+\frac{-h^2b_2\sgnsingle(z_{1,k}/h)-z_{1,k}}{h^2b_1}=q_{2,k}.
 \end{array}
 \end{equation}
 
@@ -975,54 +1070,24 @@ It indicates that for a sufficiently large $k$, the system enters the region def
 
 
 
+%% If you have bib database file and want bibtex to generate the
+%% bibitems, please use
+%%
+%%  \bibliographystyle{elsarticle-num} 
+%%  \bibliography{<your bibdatabase>}
 
-%{\appendices
-%\section*{Proof of the First Zonklar Equation}
-%Appendix one text goes here.
-% You can choose not to have a title for an appendix if you want by leaving the argument blank
-%\section*{Proof of the Second Zonklar Equation}
-%Appendix two text goes here.}
+%% else use the following coding to input the bibitems directly in the
+%% TeX file.
 
-\bibliographystyle{IEEEtran}
+%% Refer following link for more details about bibliography and citations.
+%% https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+
 \bibliography{Mybib}
 
-
-
-%\newpage
-
-\section*{Biography Section}
- 
-
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{F_mojalli.jpg}}]{Mohammad Rasool MOJALLIZADEH} was born in Isfahan, Iran, in 1988. He
-received the Ph.D. degree in control engineering from the University of Tabriz, Iran, in 2017, with the highest academic distinction of Excellence. He subsequently joined INRIA, France, as a postdoctoral researcher on the ANR Digitslid and IRT Nanoelec projects until 2022. In 2022, he worked as a research engineer at Centrale Nantes, France, contributing to several national and European projects, including the H2020 project FLOATECH and the ANR CREATIF project. Since 2024, he has been a lecturer-researcher at the Arts et Métiers Institute of Technology.
-\end{IEEEbiography}
-
-\vspace{11pt}
-
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{BPi.jpg}}]{Benoît PICHEREAU} was born in France during the former millenium. He is a Resident Faculty member at Arts et Métiers Institute of Technology since 1994. He teaches Mechanical Vibration in Angers (France).
-
-\end{IEEEbiography}
-
-\vspace{11pt}
-
-\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.45in,clip,keepaspectratio]{Etienne.jpg}}]{Etienne PESSARD} was born in France. He received the Ph.D. degree in Mechanics and Materials in 2009. He then worked as a lecturer and researcher for 10 years, during which he contributed to numerous projects, including FUI QUAUSI, ANR DEFISURF, IRT Jules Verne projects FATAL and FASICOM. In parallel, he co-supervised several industrial Ph.D. theses focused on the fatigue resistance of metals. After a one-year experience as a visiting professor at École Polytechnique de Montréal, his research activities shifted toward vibrational fatigue testing using shakers. Since 2024, he has been a Professor at the Arts et Métiers Institute of Technology.
-
-\end{IEEEbiography}
-
-
-
-%\vspace{11pt}
-
-%\bf{If you will not include a photo:}\vspace{-33pt}
-%\begin{IEEEbiographynophoto}{John Doe}
-%Use $\backslash${\tt{begin\{IEEEbiographynophoto\}}} and the author name as the argument followed by the biography text.
-%\end{IEEEbiographynophoto}
-
-
-
-
-\vfill
+\bibliographystyle{elsarticle-num}
 
 \end{document}
 
-
+\endinput
+%%
+%% End of file `elsarticle-template-num.tex'.

@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2025)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: elsarticle-template-num.aux
+The style file: elsarticle-num.bst
+Database file #1: Mybib.bib
+Warning--empty journal in herrmann2018simulation_Thesis
+Warning--empty author and editor in DIN_standard
+Warning--empty publisher in DIN_standard
+Warning--empty pages in Utkin1955
+Warning--can't use both author and editor fields in Fridman2015
+Warning--empty chapter and pages in Fridman2015
+You've used 42 entries,
+            2952 wiz_defined-function locations,
+            988 strings with 14695 characters,
+and the built_in function-call counts, 13319 in all, are:
+= -- 1275
+> -- 390
+< -- 6
++ -- 158
+- -- 116
+* -- 996
+:= -- 1768
+add.period$ -- 66
+call.type$ -- 42
+change.case$ -- 39
+chr.to.int$ -- 0
+cite$ -- 48
+duplicate$ -- 411
+empty$ -- 1557
+format.name$ -- 147
+if$ -- 3523
+int.to.chr$ -- 0
+int.to.str$ -- 42
+missing$ -- 45
+newline$ -- 166
+num.names$ -- 41
+pop$ -- 261
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 887
+stack$ -- 0
+substring$ -- 656
+swap$ -- 137
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 6
+while$ -- 80
+width$ -- 44
+write$ -- 405
+(There were 6 warnings)

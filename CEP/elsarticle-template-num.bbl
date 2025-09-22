@@ -1,0 +1,280 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{radaj2007ermudungsfestigkeit}
+D.~Radaj, M.~Vormwald, Erm{\"u}dungsfestigkeit, Springer, 2007.
+
+\bibitem{SCHRAMM2024117045}
+C.~Schramm, D.~Birkner, S.~Marx, Resonance-based testing facility for fatigue
+  tests of different axially loaded structural elements, Engineering Structures
+  298 (2024) 117045.
+\newblock \href
+  {https://doi.org/https://doi.org/10.1016/j.engstruct.2023.117045}
+  {\path{doi:https://doi.org/10.1016/j.engstruct.2023.117045}}.
+
+\bibitem{SCHNEIDER2018171}
+S.~Schneider, R.~Herrmann, S.~Marx, Development of a resonant fatigue testing
+  facility for large-scale beams in bending, International Journal of Fatigue
+  113 (2018) 171--183.
+\newblock \href
+  {https://doi.org/https://doi.org/10.1016/j.ijfatigue.2018.03.036}
+  {\path{doi:https://doi.org/10.1016/j.ijfatigue.2018.03.036}}.
+
+\bibitem{herrmann2018simulation_Thesis}
+R.~Herrmann, Simulation und regelung von resonanzversuchsst{\"a}nden zur
+  untersuchung der bauteilerm{\"u}dung (2018).
+
+\bibitem{Santus_2024}
+C.~Santus, L.~Romanelli, L.~Bertini, A.~Burchianti, T.~Inoue,
+  \href{https://www.mdpi.com/2075-1702/12/5/314}{Resonant fatigue tests on
+  polished drill pipe specimens}, Machines 12~(5) (2024).
+\newblock \href {https://doi.org/10.3390/machines12050314}
+  {\path{doi:10.3390/machines12050314}}.
+\newline\urlprefix\url{https://www.mdpi.com/2075-1702/12/5/314}
+
+\bibitem{Rouillard_2000}
+V.~Rouillard, M.~A. Sek, A frequency domain technique for maintaining resonance
+  condition during sine dwell vibration testing of packages, Packaging
+  Technology and Science 13~(6) (2000) 227--232.
+\newblock \href {https://doi.org/https://doi.org/10.1002/pts.520}
+  {\path{doi:https://doi.org/10.1002/pts.520}}.
+
+\bibitem{DORANGA2024115368}
+S.~Doranga, S.~B. Ferdowsi, Y.~Li, M.~Khanal, A novel approach of fatigue
+  testing and evaluation of electronic systems based on phase tracking,
+  Microelectronics Reliability 155 (2024) 115368.
+\newblock \href
+  {https://doi.org/https://doi.org/10.1016/j.microrel.2024.115368}
+  {\path{doi:https://doi.org/10.1016/j.microrel.2024.115368}}.
+
+\bibitem{ikehara2010development}
+T.~Ikehara, T.~Tsuchiya, Development of amplitude-controlled
+  parallel-fatigue-test system for micro-electromechanical resonators, Sensors
+  and Materials 22~(1) (2010) 39--50.
+
+\bibitem{Su2014}
+Q.~Su, J.~Pitarresi, M.~Gharaibeh, A.~Stewart, G.~Joshi, M.~Anselm, Accelerated
+  vibration reliability testing of electronic assemblies using sine dwell with
+  resonance tracking, in: 2014 IEEE 64th Electronic Components and Technology
+  Conference (ECTC), 2014, pp. 119--125.
+\newblock \href {https://doi.org/10.1109/ECTC.2014.6897276}
+  {\path{doi:10.1109/ECTC.2014.6897276}}.
+
+\bibitem{George_2006}
+T.~J. George, M.-H.~H. Shen, T.~Nicholas, C.~J. Cross,
+  \href{https://doi.org/10.1115/1.1788687}{{A New Multiaxial Fatigue Testing
+  Method for Variable-Amplitude Loading and Stress Ratio }}, Journal of
+  Engineering for Gas Turbines and Power 128~(4) (2006) 857--864.
+\newblock \href
+  {http://arxiv.org/abs/https://asmedigitalcollection.asme.org/gasturbinespower/article-pdf/128/4/857/5670391/857\_1.pdf}
+  {\path{arXiv:https://asmedigitalcollection.asme.org/gasturbinespower/article-pdf/128/4/857/5670391/857\_1.pdf}},
+  \href {https://doi.org/10.1115/1.1788687} {\path{doi:10.1115/1.1788687}}.
+\newline\urlprefix\url{https://doi.org/10.1115/1.1788687}
+
+\bibitem{CESNIK20125370}
+M.~Česnik, J.~Slavič, M.~Boltežar, Uninterrupted and accelerated vibrational
+  fatigue testing with simultaneous monitoring of the natural frequency and
+  damping, Journal of Sound and Vibration 331~(24) (2012) 5370--5382.
+\newblock \href {https://doi.org/https://doi.org/10.1016/j.jsv.2012.06.022}
+  {\path{doi:https://doi.org/10.1016/j.jsv.2012.06.022}}.
+
+\bibitem{gautrelet2020resonance}
+C.~Gautrelet, L.~Khalij, M.~R. Machado, Resonance track-and-dwell testing for
+  crack length measurement on 304l stainless steel, Mechanics \& Industry
+  21~(6) (2020) 617.
+
+\bibitem{met11101512}
+L.~Lan, S.~Guo, X.~Liu, On the evaluation of energy dissipation at the
+  beginning of fatigue, Metals 11~(10) (2021).
+
+\bibitem{Ji_2010}
+J.~Xingjian, Z.~Jianxing, Resonant fatigue testing machine frequency lock based
+  on fuzzy logic technique, in: 2010 International Conference on Mechanic
+  Automation and Control Engineering, 2010, pp. 691--693.
+\newblock \href {https://doi.org/10.1109/MACE.2010.5536220}
+  {\path{doi:10.1109/MACE.2010.5536220}}.
+
+\bibitem{Stanzl01041980_fast_ultrasonic}
+S.~Stanzl, E.~Tschegg, Fatigue crack growth and threshold measured at very high
+  frequencies (20 khz), Metal Science 14~(4) (1980) 137--143.
+\newblock \href {https://doi.org/10.1179/msc.1980.14.4.137}
+  {\path{doi:10.1179/msc.1980.14.4.137}}.
+
+\bibitem{Gautrelet_2020}
+{Gautrelet, Christophe}, {Khalij, Leila}, {Machado, Marcela Rodrigues},
+  \href{https://doi.org/10.1051/meca/2020089}{Resonance track‐and‐dwell
+  testing for crack length measurement on 304l stainless steel}, Mechanics \&
+  Industry 21~(6) (2020) 617.
+\newblock \href {https://doi.org/10.1051/meca/2020089}
+  {\path{doi:10.1051/meca/2020089}}.
+\newline\urlprefix\url{https://doi.org/10.1051/meca/2020089}
+
+\bibitem{feng2003development_Japaneese}
+M.~Feng, M.~Li, Development of a computerized electrodynamic resonant fatigue
+  test machine and its applications to automotive components, Tech. rep., SAE
+  Technical Paper (2003).
+
+\bibitem{Dupke2026}
+A.~Varela~de Albuquerque~Dupke, E.~Pessard, D.~Mellé, A.~Ross, M.~Brochu,
+  Novel high cycle vibration-based fatigue test for pure shear loading,
+  International Journal of Fatigue 202, cited by: 0 (2026).
+\newblock \href {https://doi.org/10.1016/j.ijfatigue.2025.109180}
+  {\path{doi:10.1016/j.ijfatigue.2025.109180}}.
+
+\bibitem{DIN_standard}
+\href{https://www.dinmedia.de/en/standard/din-50100/263107018}{Load controlled
+  fatigue testing - Execution and evaluation of cyclic tests at constant load
+  amplitudes on metallic specimens and components}, Germany, 2016, dIN
+  50100:2016-12.
+\newline\urlprefix\url{https://www.dinmedia.de/en/standard/din-50100/263107018}
+
+\bibitem{Slotine1991}
+J.-J.~E. Slotine, W.~Li, et~al., Applied nonlinear control, Prentice Hall,
+  1991.
+
+\bibitem{Utkin1955}
+Y.~Tsypkin, {Theory of relay control systems (in Russian)}, in: Gostehizdat,
+  1955.
+
+\bibitem{UTKIN2020_higher_order}
+V.~Utkin, A.~Poznyak, Y.~Orlov, A.~Polyakov, Conventional and high order
+  sliding mode control, Journal of the Franklin Institute 357~(15) (2020)
+  10244--10261.
+\newblock \href
+  {https://doi.org/https://doi.org/10.1016/j.jfranklin.2020.06.018}
+  {\path{doi:https://doi.org/10.1016/j.jfranklin.2020.06.018}}.
+
+\bibitem{Orlov_twisting}
+Y.~Orlov, Finite time stability and robust control synthesis of uncertain
+  switched systems, SIAM Journal on Control and Optimization 43~(4) (2004)
+  1253--1271.
+\newblock \href {https://doi.org/10.1137/S0363012903425593}
+  {\path{doi:10.1137/S0363012903425593}}.
+
+\bibitem{Utkin_twisting}
+V.~Utkin, About second order sliding mode control, relative degree, finite-time
+  convergence and disturbance rejection, in: 2010 11th International Workshop
+  on Variable Structure Systems (VSS), 2010, pp. 528--533.
+\newblock \href {https://doi.org/10.1109/VSS.2010.5545133}
+  {\path{doi:10.1109/VSS.2010.5545133}}.
+
+\bibitem{POLYAKOV_twisting}
+A.~Polyakov, A.~Poznyak, Lyapunov function design for finite-time convergence
+  analysis: “twisting” controller for second-order sliding mode
+  realization, Automatica 45~(2) (2009) 444--448.
+\newblock \href
+  {https://doi.org/https://doi.org/10.1016/j.automatica.2008.07.013}
+  {\path{doi:https://doi.org/10.1016/j.automatica.2008.07.013}}.
+
+\bibitem{Santiesteban_twisting}
+R.~Santiesteban, L.~Fridman, J.~A. Moreno, Finite-time convergence analysis for
+  “twisting” controller via a strict lyapunov function, in: 2010 11th
+  International Workshop on Variable Structure Systems (VSS), 2010, pp. 1--6.
+\newblock \href {https://doi.org/10.1109/VSS.2010.5545144}
+  {\path{doi:10.1109/VSS.2010.5545144}}.
+
+\bibitem{TORRESGONZALEZ2017_twisting}
+V.~Torres-González, T.~Sanchez, L.~M. Fridman, J.~A. Moreno, Design of
+  continuous twisting algorithm, Automatica 80 (2017) 119--126.
+\newblock \href
+  {https://doi.org/https://doi.org/10.1016/j.automatica.2017.02.035}
+  {\path{doi:https://doi.org/10.1016/j.automatica.2017.02.035}}.
+
+\bibitem{Fridman2015}
+L.~Fridman, J.~A. Moreno, B.~Bandyopadhyay, S.~Kamal, A.~Chalanga,
+  \href{https://doi.org/10.1007/978-3-319-18290-2_2}{Continuous Nested
+  Algorithms : The Fifth Generation of Sliding Mode Controllers}, Springer
+  International Publishing, Cham, 2015, pp. 5--35.
+\newblock \href {https://doi.org/10.1007/978-3-319-18290-2_2}
+  {\path{doi:10.1007/978-3-319-18290-2_2}}.
+\newline\urlprefix\url{https://doi.org/10.1007/978-3-319-18290-2_2}
+
+\bibitem{kuo}
+F.~Golnaraghi, B.~Kuo, Automatic Control Systems, 10th Edition, McGraw-Hill
+  Education, 2017.
+
+\bibitem{s22176378}
+J.~Moon, S.~Park, S.~Lim, \href{https://www.mdpi.com/1424-8220/22/17/6378}{A
+  novel high-speed resonant frequency tracking method using transient
+  characteristics in a piezoelectric transducer}, Sensors 22~(17) (2022).
+\newblock \href {https://doi.org/10.3390/s22176378}
+  {\path{doi:10.3390/s22176378}}.
+\newline\urlprefix\url{https://www.mdpi.com/1424-8220/22/17/6378}
+
+\bibitem{MA2024107318}
+S.~Ma, Y.~Zhang, X.~Zhuang, D.~Wang, S.~Chen, H.~Liu,
+  \href{https://www.sciencedirect.com/science/article/pii/S0041624X24000805}{Frequency
+  tuning and automatic frequency tracking of shunted piezoelectric
+  transducers}, Ultrasonics 141 (2024) 107318.
+\newblock \href {https://doi.org/https://doi.org/10.1016/j.ultras.2024.107318}
+  {\path{doi:https://doi.org/10.1016/j.ultras.2024.107318}}.
+\newline\urlprefix\url{https://www.sciencedirect.com/science/article/pii/S0041624X24000805}
+
+\bibitem{ZHANG2015140}
+H.~Zhang, F.~Wang, D.~Zhang, L.~wang, Y.~Hou, T.~Xi,
+  \href{https://www.sciencedirect.com/science/article/pii/S0924424715301576}{A
+  new automatic resonance frequency tracking method for piezoelectric
+  ultrasonic transducers used in thermosonic wire bonding}, Sensors and
+  Actuators A: Physical 235 (2015) 140--150.
+\newblock \href {https://doi.org/https://doi.org/10.1016/j.sna.2015.09.040}
+  {\path{doi:https://doi.org/10.1016/j.sna.2015.09.040}}.
+\newline\urlprefix\url{https://www.sciencedirect.com/science/article/pii/S0924424715301576}
+
+\bibitem{Ross2010}
+T.~J. Ross, Fuzzy logic with engineering applications 3rd ed., John Wiley \&
+  Sons, Inc., 2010.
+
+\bibitem{Computers}
+J.~Zhuge, {A History of Vibration Test Controllers},
+  \url{https://www.crystalinstruments.com/history-of-vibration-test-controllers}
+  (2016).
+
+\bibitem{Levant_TC}
+A.~LEVANT, Sliding order and sliding accuracy in sliding mode control,
+  International Journal of Control 58~(6) (1993) 1247--1263.
+\newblock \href {https://doi.org/10.1080/00207179308923053}
+  {\path{doi:10.1080/00207179308923053}}.
+
+\bibitem{Levant_TC_geometry}
+A.~Levant, Principles of 2-sliding mode design, Automatica 43~(4) (2007)
+  576--586.
+
+\bibitem{Oza_twisting}
+H.~B. Oza, Y.~V. Orlov, S.~K. Spurgeon, Lyapunov-based settling time estimate
+  and tuning for twisting controller, IMA Journal of Mathematical Control and
+  Information 29~(4) (2012) 471--490.
+
+\bibitem{MOJALLIZADEH_Franklin}
+M.~R. Mojallizadeh, Digital implementation of the supertwisting controller
+  based on the deadbeat method, Journal of the Franklin Institute 362~(12)
+  (2025) 107785.
+\newblock \href
+  {https://doi.org/https://doi.org/10.1016/j.jfranklin.2025.107785}
+  {\path{doi:https://doi.org/10.1016/j.jfranklin.2025.107785}}.
+
+\bibitem{Huber2014}
+O.~Huber, V.~Acary, B.~Brogliato, F.~Plestan, Discrete-time twisting controller
+  without numerical chattering: analysis and experimental results with an
+  implicit method, in: 53rd IEEE Conference on Decision and Control, 2014, pp.
+  4373--4378.
+
+\bibitem{Huber2020}
+O.~Huber, V.~Acary, B.~Brogliato, Lyapunov stability analysis of the implicit
+  discrete-time twisting control algorithm, IEEE Transactions on Automatic
+  Control 65~(6) (2020) 2619--2626.
+
+\bibitem{Xiong2020}
+X.~Xiong, R.~Kikuuwe, S.~Kamal, S.~Jin, Implicit-euler implementation of
+  super-twisting observer and twisting controller for second-order systems,
+  IEEE Transactions on Circuits and Systems II: Express Briefs 67~(11) (2020)
+  2607--2611.
+
+\bibitem{UTKIN_twisting_stablity}
+V.~Utkin, Stability and convergence rate of twisting algorithm, IFAC
+  Proceedings Volumes 43~(14) (2010) 1267--1271.
+
+\end{thebibliography}

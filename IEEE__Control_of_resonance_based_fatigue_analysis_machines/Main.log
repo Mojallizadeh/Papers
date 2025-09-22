@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.8.2)  19 SEP 2025 10:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.8.2)  22 SEP 2025 15:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -812,9 +812,20 @@ File: omsptm.fd
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 89.
+
+Underfull \hbox (badness 4752) in paragraph at lines 89--89
+[][][]\OT1/ptm/m/n/8 The au-thors are with the Arts et M[]etiers In-sti-tute of
+ Tech-
+ []
+
+
+Underfull \hbox (badness 5475) in paragraph at lines 89--89
+\OT1/ptm/m/n/8 nol-ogy, LAMPA, F-49035 Angers, France (e-mails: \OMS/cmsy/m/n/8
+ f\OT1/ptm/m/n/8 mohammad-
+ []
+
 LaTeX Font Info:    Trying to load font information for U+msa on input line 101
 .
-
 (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -835,7 +846,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Control_system_fatigue_total.pdf, id=182, 372.33492pt x 207.75305pt>
+<Control_system_fatigue_total.pdf, id=198, 372.33492pt x 207.75305pt>
 File: Control_system_fatigue_total.pdf Graphic file (type pdf)
 <use Control_system_fatigue_total.pdf>
 Package pdftex.def Info: Control_system_fatigue_total.pdf  used on input line 1
@@ -847,7 +858,7 @@ Package pdftex.def Info: Control_system_fatigue_total.pdf  used on input line 1
 
 [2 <./Control_system_fatigue_total.pdf>]
 
-<F_bode.png, id=231, 2168.1pt x 1083.29718pt>
+<F_bode.png, id=247, 2168.1pt x 1083.29718pt>
 File: F_bode.png Graphic file (type png)
 <use F_bode.png>
 Package pdftex.def Info: F_bode.png  used on input line 232.
@@ -855,17 +866,17 @@ Package pdftex.def Info: F_bode.png  used on input line 232.
 
 
 [3 <./F_bode.png (PNG copy)>]
-<Fuzzy_controller.pdf, id=279, 580.36691pt x 99.14938pt>
+<Fuzzy_controller.pdf, id=295, 580.36691pt x 99.14938pt>
 File: Fuzzy_controller.pdf Graphic file (type pdf)
 <use Fuzzy_controller.pdf>
 Package pdftex.def Info: Fuzzy_controller.pdf  used on input line 262.
 (pdftex.def)             Requested size: 450.43253pt x 76.95343pt.
-<F_membership.png, id=280, 1816.53656pt x 1007.26312pt>
+<F_membership.png, id=296, 1816.53656pt x 1007.26312pt>
 File: F_membership.png Graphic file (type png)
 <use F_membership.png>
 Package pdftex.def Info: F_membership.png  used on input line 269.
 (pdftex.def)             Requested size: 244.24199pt x 135.42134pt.
-<Fuzzy_rules.png, id=281, 456.95718pt x 184.43906pt>
+<Fuzzy_rules.png, id=297, 456.95718pt x 184.43906pt>
 File: Fuzzy_rules.png Graphic file (type png)
 <use Fuzzy_rules.png>
 Package pdftex.def Info: Fuzzy_rules.png  used on input line 276.
@@ -879,8 +890,6 @@ Package pdftex.def Info: Fuzzy_rules.png  used on input line 276.
 
 
 [5]
-
-
 Underfull \hbox (badness 1448) in paragraph at lines 472--473
 []\OT1/ptm/m/n/10 Two math-e-mat-i-cal mod-els are iden-ti-fied to de-scribe
  []
@@ -913,13 +922,13 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 479.
 
+
+
 LaTeX Font Info:    Trying to load font information for OT1+qcr on input line 4
 87.
 (c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ot1qcr.fd
 File: ot1qcr.fd 2009/09/25 v1.2 font definition file for OT1/qcr
 )
-
-[6{c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-rmm.enc}]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 520.
@@ -962,66 +971,67 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 
+[6{c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-rmm.enc}]
 
-
-[7]
-<F_simulink.png, id=509, 1492.07437pt x 380.92313pt>
+<F_simulink.png, id=491, 1492.07437pt x 380.92313pt>
 File: F_simulink.png Graphic file (type png)
 <use F_simulink.png>
 Package pdftex.def Info: F_simulink.png  used on input line 637.
 (pdftex.def)             Requested size: 500.484pt x 127.76842pt.
 
 
-
+[7]
 Overfull \hbox (3.79538pt too wide) in paragraph at lines 655--662
  [][] 
  []
 
 
 
-[8 <./F_simulink.png>]
+
 Underfull \hbox (badness 2376) in paragraph at lines 682--684
 \OT1/ptm/m/n/10 track-ing per-for-mances, re-spec-tively. As pre-vi-ously ex-
  []
 
 
 
-<F_frequency_sim.png, id=551, 1681.03032pt x 901.86937pt>
+[8 <./F_simulink.png>]
+<F_frequency_sim.png, id=566, 1681.03032pt x 901.86937pt>
 File: F_frequency_sim.png Graphic file (type png)
 <use F_frequency_sim.png>
 Package pdftex.def Info: F_frequency_sim.png  used on input line 710.
 (pdftex.def)             Requested size: 244.24199pt x 131.03606pt.
-<F_displacement_sim.png, id=552, 1609.51312pt x 910.15031pt>
+<F_displacement_sim.png, id=567, 1609.51312pt x 910.15031pt>
 File: F_displacement_sim.png Graphic file (type png)
 <use F_displacement_sim.png>
 Package pdftex.def Info: F_displacement_sim.png  used on input line 716.
 (pdftex.def)             Requested size: 244.24199pt x 138.11374pt.
 
 
-[9 <./F_frequency_sim.png> <./F_displacement_sim.png>]
-<F_experiments.pdf, id=562, 249.07489pt x 191.01447pt>
+<F_experiments.pdf, id=569, 249.07489pt x 191.01447pt>
 File: F_experiments.pdf Graphic file (type pdf)
 <use F_experiments.pdf>
 Package pdftex.def Info: F_experiments.pdf  used on input line 729.
 (pdftex.def)             Requested size: 244.24199pt x 187.3153pt.
 
 
-<F_phase.png, id=578, 1623.81656pt x 904.88063pt>
+[9 <./F_frequency_sim.png> <./F_displacement_sim.png>]
+
+<F_phase.png, id=589, 1623.81656pt x 904.88063pt>
 File: F_phase.png Graphic file (type png)
 <use F_phase.png>
 Package pdftex.def Info: F_phase.png  used on input line 753.
 (pdftex.def)             Requested size: 244.24199pt x 136.09903pt.
-<F_frequency.png, id=579, 1605.74907pt x 904.88063pt>
+<F_frequency.png, id=590, 1605.74907pt x 904.88063pt>
 File: F_frequency.png Graphic file (type png)
 <use F_frequency.png>
 Package pdftex.def Info: F_frequency.png  used on input line 759.
 (pdftex.def)             Requested size: 244.24199pt x 137.63165pt.
-<F_displacement.png, id=580, 1614.7828pt x 904.88063pt>
+<F_displacement.png, id=591, 1614.7828pt x 904.88063pt>
 File: F_displacement.png Graphic file (type png)
 <use F_displacement.png>
 Package pdftex.def Info: F_displacement.png  used on input line 766.
 (pdftex.def)             Requested size: 244.24199pt x 136.85844pt.
-<F_control_amplitude.png, id=581, 1625.32219pt x 904.88063pt>
+<F_control_amplitude.png, id=592, 1625.32219pt x 904.88063pt>
 File: F_control_amplitude.png Graphic file (type png)
 <use F_control_amplitude.png>
 Package pdftex.def Info: F_control_amplitude.png  used on input line 772.
@@ -1031,27 +1041,24 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 7
 (c:/texlive/2025/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Underfull \vbox (badness 1874) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[10 <./F_experiments.pdf>]
+[10 <./F_experiments.pdf> <./F_phase.png> <./F_frequency.png>]
 
 
 
-[11 <./F_phase.png> <./F_frequency.png> <./F_displacement.png> <./F_control_amp
-litude.png>]
+[11 <./F_displacement.png> <./F_control_amplitude.png>]
 
 
-Overfull \hbox (7.35919pt too wide) detected at line 956
+Overfull \hbox (7.35919pt too wide) detected at line 957
 [][][][][]
  []
 
 
 
 [12] (./Main.bbl
-
-
 Underfull \hbox (badness 1521) in paragraph at lines 66--70
 []\OT1/ptm/m/n/8 Q. Su, J. Pitar-resi, M. Gharaibeh, A. Stew-art, G. Joshi, and
 
@@ -1059,28 +1066,61 @@ Underfull \hbox (badness 1521) in paragraph at lines 66--70
 
 
 
+
+
 [13])
+<F_mojalli.jpg, id=754, 249.93375pt x 256.96pt>
+File: F_mojalli.jpg Graphic file (type jpg)
+<use F_mojalli.jpg>
+Package pdftex.def Info: F_mojalli.jpg  used on input line 996.
+(pdftex.def)             Requested size: 72.26917pt x 74.30083pt.
+File: F_mojalli.jpg Graphic file (type jpg)
+<use F_mojalli.jpg>
+Package pdftex.def Info: F_mojalli.jpg  used on input line 996.
+(pdftex.def)             Requested size: 72.26917pt x 74.30083pt.
+
+Underfull \hbox (badness 1371) in paragraph at lines 996--998
+[]\OT1/ptm/b/n/8 Mohammad Ra-sool MO-JAL-LIZADEH \OT1/ptm/m/n/8 was
+ []
+
+<BPi.jpg, id=757, 763.85374pt x 761.84625pt>
+File: BPi.jpg Graphic file (type jpg)
+<use BPi.jpg>
+Package pdftex.def Info: BPi.jpg  used on input line 1002.
+(pdftex.def)             Requested size: 72.26381pt x 72.0739pt.
+File: BPi.jpg Graphic file (type jpg)
+<use BPi.jpg>
+Package pdftex.def Info: BPi.jpg  used on input line 1002.
+(pdftex.def)             Requested size: 72.26381pt x 72.0739pt.
 
 
+<Etienne.jpg, id=760, 2162.0775pt x 3732.94624pt>
+File: Etienne.jpg Graphic file (type jpg)
+<use Etienne.jpg>
+Package pdftex.def Info: Etienne.jpg  used on input line 1008.
+(pdftex.def)             Requested size: 60.66971pt x 104.74962pt.
+File: Etienne.jpg Graphic file (type jpg)
+<use Etienne.jpg>
+Package pdftex.def Info: Etienne.jpg  used on input line 1008.
+(pdftex.def)             Requested size: 60.66971pt x 104.74962pt.
 
-[14
 
-] (./Main.aux)
+[14 <./F_mojalli.jpg> <./BPi.jpg> <./Etienne.jpg>] (./Main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `Main.out' has not changed.
-(rerunfilecheck)             Checksum: 806E6D5ED4091DEB9D2ACB5B6A108398;5064.
+(rerunfilecheck)             Checksum: B550C879FA17929C02BEEDC65379BA1D;5687.
  ) 
 Here is how much of TeX's memory you used:
- 19523 strings out of 473190
- 326462 string characters out of 5719980
- 788678 words of memory out of 5000000
- 42263 multiletter control sequences out of 15000+600000
+ 19552 strings out of 473190
+ 326952 string characters out of 5719980
+ 788681 words of memory out of 5000000
+ 42287 multiletter control sequences out of 15000+600000
  602703 words of font info for 120 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 75i,16n,79p,1782b,624s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,16n,79p,1782b,620s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/te
 xlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/202
 5/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2025/texmf-di
@@ -1106,10 +1146,10 @@ ex-gyre/qcrr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><
 c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2025/t
 exmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2025/texmf-dist/fonts/ty
 pe1/urw/times/utmri8a.pfb>
-Output written on Main.pdf (14 pages, 1813339 bytes).
+Output written on Main.pdf (14 pages, 2873508 bytes).
 PDF statistics:
- 917 PDF objects out of 1000 (max. 8388607)
- 808 compressed objects within 9 object streams
- 218 named destinations out of 1000 (max. 500000)
- 266 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 943 PDF objects out of 1000 (max. 8388607)
+ 825 compressed objects within 9 object streams
+ 223 named destinations out of 1000 (max. 500000)
+ 349 words of extra memory for PDF output out of 10000 (max. 10000000)
 

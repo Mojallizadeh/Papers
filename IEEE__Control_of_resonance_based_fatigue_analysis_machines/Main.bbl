@@ -206,13 +206,9 @@ H.~Zhang, F.~Wang, D.~Zhang, L.~wang, Y.~Hou, and T.~Xi, ``A new automatic
   \url{https://www.sciencedirect.com/science/article/pii/S0924424715301576}
 \BIBentrySTDinterwordspacing
 
-\bibitem{Ross2005fuzzy}
-T.~J. Ross, \emph{Fuzzy logic with engineering applications}.\hskip 1em plus
-  0.5em minus 0.4em\relax John Wiley \& Sons, 2010.
-
 \bibitem{Ross2010}
-------, \emph{Fuzzy logic with engineering applications 3rd ed.}\hskip 1em plus
-  0.5em minus 0.4em\relax John Wiley \& Sons, Inc., 2010.
+T.~J. Ross, \emph{Fuzzy logic with engineering applications 3rd ed.}\hskip 1em
+  plus 0.5em minus 0.4em\relax John Wiley \& Sons, Inc., 2010.
 
 \bibitem{Computers}
 J.~Zhuge, ``{A History of Vibration Test Controllers},''
